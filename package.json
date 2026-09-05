@@ -1,0 +1,23 @@
+{
+  "name": "synchro-spaces",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@11.24.0",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "dev": "corepack pnpm --parallel --filter @client/web --filter @client/studio dev",
+    "dev:web": "corepack pnpm --filter @client/web dev",
+    "dev:studio": "corepack pnpm --filter @client/studio dev",
+    "build": "corepack pnpm -r build",
+    "lint": "corepack pnpm -r lint",
+    "typecheck": "corepack pnpm -r typecheck",
+    "test": "corepack pnpm --filter @client/web test",
+    "test:e2e": "corepack pnpm --filter @client/web test:e2e",
+    "validate": "corepack pnpm lint && corepack pnpm typecheck && corepack pnpm test && corepack pnpm build"
+  },
+  "devDependencies": {
+    "typescript": "workspace:*"
+  }
+}

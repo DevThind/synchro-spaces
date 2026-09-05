@@ -1,0 +1,15 @@
+{
+  "name": "typescript",
+  "version": "6.0.2",
+  "private": true,
+  "description": "Workspace compatibility package exposing the TypeScript 6 preview under the canonical package name.",
+  "main": "./index.cjs",
+  "types": "./index.d.ts",
+  "bin": {
+    "tsc": "./bin/tsc.cjs",
+    "tsc6": "./bin/tsc.cjs"
+  },
+  "dependencies": {
+    "@typescript/typescript6": "6.0.2"
+  }
+}

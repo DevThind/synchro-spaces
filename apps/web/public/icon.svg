@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Synchro Spaces">
+  <rect width="64" height="64" rx="8" fill="#0e0e0d"/>
+  <circle cx="32" cy="32" r="25" fill="none" stroke="#ddb27e" stroke-width="2"/>
+  <path d="M17 45h30M20 45V27h13v18M33 45V19h12v26M25 33h3M38 26h3M38 32h3" fill="none" stroke="#ddb27e" stroke-linecap="square" stroke-width="2"/>
+</svg>

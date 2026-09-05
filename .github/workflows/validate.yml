@@ -1,0 +1,38 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.24.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm build
+        env:
+          NEXT_PUBLIC_CONTENT_MODE: mock
+          NEXT_PUBLIC_SITE_URL: http://localhost:3000
+      - run: pnpm --filter @client/web exec playwright install --with-deps chromium
+      - run: pnpm test:e2e --project=desktop-chromium
+        env:
+          NEXT_PUBLIC_CONTENT_MODE: mock
+          NEXT_PUBLIC_SITE_URL: http://localhost:3000
+
