@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 declare global {
   interface Window {
     turnstile?: {
-      render(element: HTMLElement, options: { sitekey: string; callback: (token: string) => void; "error-callback": () => void; theme: "light" }): string;
+      render(element: HTMLElement, options: { sitekey: string; callback: (token: string) => void; "error-callback": () => void; theme: "light"; size: "flexible" | "compact" }): string;
       remove(widgetId: string): void;
     };
   }
@@ -15,7 +15,19 @@ export function TurnstileField({ siteKey, onToken }: { siteKey: string; onToken:
   const host = useRef<HTMLDivElement>(null);
   useEffect(() => {
     let widgetId: string | undefined;
-    const render = () => { if (host.current && window.turnstile && !widgetId) widgetId = window.turnstile.render(host.current, { sitekey: siteKey, callback: onToken, "error-callback": () => onToken(""), theme: "light" }); };
+    const render = () => {
+      if (host.current && window.turnstile && !widgetId) {
+        widgetId = window.turnstile.render(host.current, {
+          sitekey: siteKey,
+          callback: onToken,
+          "error-callback": () => onToken(""),
+          theme: "light",
+          size: typeof window.matchMedia === "function" && window.matchMedia("(max-width: 360px)").matches
+            ? "compact"
+            : "flexible"
+        });
+      }
+    };
     if (window.turnstile) render();
     else {
       const existing = document.querySelector<HTMLScriptElement>('script[data-turnstile="true"]');
@@ -24,6 +36,5 @@ export function TurnstileField({ siteKey, onToken }: { siteKey: string; onToken:
     }
     return () => { if (widgetId && window.turnstile) window.turnstile.remove(widgetId); };
   }, [onToken, siteKey]);
-  return <div className="form-group form-group--full"><div ref={host} /><p className="field-help">Anti-bot verification protects form delivery.</p></div>;
+  return <div className="form-group form-group--full"><div className="turnstile-host" ref={host} /><p className="field-help">Anti-bot verification protects form delivery.</p></div>;
 }
-

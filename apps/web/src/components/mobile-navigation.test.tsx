@@ -13,6 +13,6 @@ describe("MobileNavigation", () => {
     expect(screen.getByRole("link", { name: /Residential/ })).toBeVisible();
     await user.keyboard("{Escape}");
     expect(screen.getByRole("button", { name: "Open navigation" })).toHaveAttribute("aria-expanded", "false");
+    expect(trigger).toHaveFocus();
   });
 });
-

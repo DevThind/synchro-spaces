@@ -12,8 +12,8 @@ test("principal navigation and responsive shell work", async ({ page }) => {
   )).toBe(false);
 });
 
-test("mobile menu is keyboard operable", async ({ page, isMobile }) => {
-  test.skip(!isMobile, "Mobile navigation test");
+test("mobile menu is keyboard operable", async ({ page }) => {
+  test.skip((page.viewportSize()?.width ?? Number.POSITIVE_INFINITY) > 1200, "Compact navigation test");
   await page.goto("/", { waitUntil: "domcontentloaded" });
   const trigger = page.getByRole("button", { name: "Open navigation" });
   await expect(trigger).toHaveAttribute("data-hydrated", "true");
@@ -21,6 +21,7 @@ test("mobile menu is keyboard operable", async ({ page, isMobile }) => {
   await expect(page.getByRole("navigation", { name: "Mobile navigation" })).toBeVisible();
   await page.keyboard.press("Escape");
   await expect(trigger).toHaveAttribute("aria-expanded", "false");
+  await expect(trigger).toBeFocused();
 });
 
 test("development consultation flow confirms server success", async ({ page }) => {

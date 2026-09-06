@@ -100,17 +100,17 @@ export default function HomePage() {
 
       <section className="section section--intro" aria-labelledby="intro-heading">
         <div className="container intro-grid">
-          <span className="eyebrow">The Synchro idea</span>
-          <div className="stack">
+          <div className="intro-grid__heading stack">
+            <span className="eyebrow">The Synchro idea</span>
             <h2 id="intro-heading" className="heading-xl">
               Every room in rhythm. Every control in context.
             </h2>
-            <p className="lede">
-              A smart space should not feel full of technology. It should feel
-              intuitive—the right light, atmosphere and response without unnecessary
-              steps. Choose a path below to explore each part in detail.
-            </p>
           </div>
+          <p className="lede">
+            A smart space should not feel full of technology. It should feel
+            intuitive—the right light, atmosphere and response without unnecessary
+            steps. Choose a path below to explore each part in detail.
+          </p>
         </div>
       </section>
 
