@@ -2,11 +2,10 @@ import Link from "next/link";
 import { hasVerifiedEmail, hasVerifiedPhone, siteConfig } from "@/config/site";
 import { BrandMark } from "./header";
 
-const serviceLinks = [
-  ["Whole-home automation", "/residential/whole-home-automation"],
-  ["Lighting & curtain control", "/residential/architectural-lighting"],
-  ["Audio, video & entertainment", "/residential/audio-video"],
-  ["Networking & infrastructure", "/residential/residential-networking"]
+const projectLinks = [
+  ["Project journal", "/projects"],
+  ["Residential", "/residential"],
+  ["Commercial", "/commercial"]
 ] as const;
 
 export function Footer() {
@@ -27,16 +26,15 @@ export function Footer() {
           {instagram ? <p><a className="text-link" href={instagram} target="_blank" rel="noreferrer" aria-label="Follow Synchro Spaces on Instagram (opens in a new tab)">Instagram <span aria-hidden="true">↗</span></a></p> : null}
         </div>
         <div>
-          <h2 className="footer-title">Solutions</h2>
-          <nav className="footer-links" aria-label="Solution links">
-            {serviceLinks.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
-            <Link href="/commercial">Commercial automation</Link>
+          <h2 className="footer-title">Projects</h2>
+          <nav className="footer-links" aria-label="Project links">
+            {projectLinks.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
           </nav>
         </div>
         <div>
-          <h2 className="footer-title">Company</h2>
-          <nav className="footer-links" aria-label="Company links">
-            <Link href="/about">About</Link><Link href="/process">Process</Link><Link href="/projects">Projects</Link>
+          <h2 className="footer-title">Explore</h2>
+          <nav className="footer-links" aria-label="Explore links">
+            <Link href="/control4">Control4</Link><Link href="/process">Process</Link><Link href="/about">About</Link>
             <Link href="/technology-partners">Technology approach</Link><Link href="/service-areas">Project locations</Link><Link href="/contact">Contact</Link>
           </nav>
         </div>

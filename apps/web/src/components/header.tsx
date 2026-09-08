@@ -1,16 +1,7 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
+import { DesktopNavigation } from "./desktop-navigation";
 import { MobileNavigation } from "./mobile-navigation";
-
-const links = [
-  ["Residential", "/residential"],
-  ["Commercial", "/commercial"],
-  ["Projects", "/projects"],
-  ["Control4", "/control4"],
-  ["Process", "/process"],
-  ["About", "/about"],
-  ["Resources", "/resources"]
-] as const;
 
 export function BrandMark() {
   return (
@@ -31,15 +22,7 @@ export function Header() {
           <BrandMark />
           <span className="brand-name">{siteConfig.companyName}</span>
         </Link>
-        <nav className="desktop-nav" aria-label="Primary navigation">
-          {links.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
-          {instagram ? (
-            <a href={instagram} target="_blank" rel="noreferrer" aria-label="Instagram (opens in a new tab)">
-              Instagram
-            </a>
-          ) : null}
-          <Link className="button button--primary" href="/contact">Plan a consultation</Link>
-        </nav>
+        <DesktopNavigation instagram={instagram} />
         <MobileNavigation />
       </div>
     </header>

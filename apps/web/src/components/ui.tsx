@@ -94,7 +94,7 @@ export function FeatureList({ items }: { items: string[] }) {
 }
 
 export function ProjectGallery({ images }: { images: ContentImage[] }) {
-  return <div className="gallery" aria-label="Project gallery">{images.map((image, index) => <figure key={`${image.src}-${index}`}><ResponsiveImage image={image} fill sizes={index === 0 ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"} /></figure>)}</div>;
+  return <div className="gallery" aria-label="Project gallery">{images.map((image, index) => <figure key={`${image.src}-${index}`}><ResponsiveImage image={image} fill priority={index === 0} sizes={index === 0 ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"} /></figure>)}</div>;
 }
 
 export function RichTextRenderer({ sections, portableText }: { sections: { heading: string; paragraphs: string[] }[]; portableText?: unknown[] }) {

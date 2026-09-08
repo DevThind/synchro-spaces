@@ -179,7 +179,7 @@ test("small-phone navigation remains usable", async ({ page }, testInfo) => {
   await trigger.click();
   const navigation = page.getByRole("navigation", { name: "Mobile navigation" });
   await expect(navigation).toBeVisible();
-  const firstLink = navigation.getByRole("link", { name: "Residential", exact: true });
+  const firstLink = navigation.getByRole("link", { name: "Control4", exact: true });
   const lastLink = navigation.getByRole("link", { name: "Plan a consultation" });
   await expect(firstLink).toBeVisible();
   await expect(firstLink).toBeFocused();

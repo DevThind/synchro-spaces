@@ -6,10 +6,11 @@ import {
   SectionHeading
 } from "@/components/ui";
 import {
+  control4KeypadWall,
+  control4TouchscreenHallway,
   integrationRack,
   residenceNight,
-  residenceTwilight,
-  sceneKeypadSix
+  residenceTwilight
 } from "@/content/fixtures";
 import { createMetadata } from "@/lib/metadata";
 
@@ -18,40 +19,40 @@ export const metadata = createMetadata({
   description:
     "Synchro Spaces brings lighting, scenes, entertainment, access and connected infrastructure into one calm smart-space experience.",
   path: "/",
-  image: residenceNight.src
+  image: control4KeypadWall.src
 });
 
-const destinations = [
+const projectDestinations = [
   {
-    eyebrow: "For the home",
-    title: "Residential",
+    eyebrow: "Project journal",
+    title: "Selected projects",
+    description:
+      "Look closer at the architecture, controls and infrastructure behind a considered smart space.",
+    href: "/projects",
+    image: residenceNight
+  },
+  {
+    eyebrow: "Projects · Residential",
+    title: "Homes",
     description:
       "Explore whole-home control, lighting, curtains, entertainment, access and infrastructure.",
     href: "/residential",
     image: residenceTwilight
   },
   {
-    eyebrow: "For shared spaces",
-    title: "Commercial",
+    eyebrow: "Projects · Commercial",
+    title: "Shared spaces",
     description:
       "Discover considered control for selected workplaces and guest-facing environments.",
     href: "/commercial",
     image: integrationRack
-  },
-  {
-    eyebrow: "Visual stories",
-    title: "Projects",
-    description:
-      "See architecture, everyday controls and the hidden backbone through the project journal.",
-    href: "/projects",
-    image: sceneKeypadSix
   }
 ] as const;
 
 const exploreLinks = [
+  { label: "Control4", href: "/control4" },
   { label: "Our process", href: "/process" },
   { label: "Technology approach", href: "/technology-partners" },
-  { label: "Control4", href: "/control4" },
   { label: "About us", href: "/about" },
   { label: "Planning guides", href: "/resources" }
 ] as const;
@@ -59,30 +60,33 @@ const exploreLinks = [
 export default function HomePage() {
   return (
     <>
-      <section className="hero" aria-labelledby="hero-heading">
+      <section className="hero hero--control4" aria-labelledby="hero-heading">
         <div className="hero-media">
-          <ResponsiveImage image={residenceNight} fill priority sizes="100vw" />
+          <ResponsiveImage image={control4KeypadWall} fill priority sizes="100vw" />
         </div>
         <div className="container hero-content">
           <div className="hero-copy stack">
             <span className="eyebrow">Synchro Spaces · Smart living, composed</span>
             <h1 id="hero-heading" className="display">
-              Technology that belongs in the space.
+              Beautiful control, built into the space.
             </h1>
             <p className="hero-lede">
-              Lighting, curtains, entertainment, access and infrastructure—brought
-              together around the way you want to live.
+              Lighting, curtains, comfort and entertainment—brought together in
+              one calm experience shaped around the way you live.
             </p>
             <div className="button-row">
               <Link
                 className="button button--primary"
+                href="/control4"
+              >
+                Explore Control4 <ArrowRight size={16} aria-hidden="true" />
+              </Link>
+              <Link
+                className="button button--outline"
                 href="/contact"
                 data-analytics-event="booking_click"
               >
-                Start a conversation <ArrowRight size={16} aria-hidden="true" />
-              </Link>
-              <Link className="button button--outline" href="/projects">
-                Explore projects
+                Plan a consultation
               </Link>
             </div>
             <div className="hero-note">
@@ -95,7 +99,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-        <p className="hero-caption">Private residence · Client-supplied photography</p>
+        <p className="hero-caption">Scene control · Client-supplied photography</p>
       </section>
 
       <section className="section section--intro" aria-labelledby="intro-heading">
@@ -114,17 +118,49 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="section home-control4" aria-labelledby="home-control4-heading">
+        <div className="container control4-feature">
+          <div className="control4-feature__media">
+            <ResponsiveImage
+              image={control4TouchscreenHallway}
+              fill
+              priority
+              sizes="(max-width: 780px) 100vw, 58vw"
+            />
+            <span className="image-index" aria-hidden="true">01 / Control in context</span>
+          </div>
+          <div className="control4-feature__copy stack">
+            <span className="eyebrow">Control4</span>
+            <h2 id="home-control4-heading" className="heading-xl">
+              One interface. Many everyday moments.
+            </h2>
+            <p className="lede">
+              Where Control4 is selected, compatible lighting, curtains, comfort,
+              music and media can respond through a consistent set of scenes and controls.
+            </p>
+            <div className="control4-feature__details" aria-label="Control options">
+              <span>Local keypads</span>
+              <span>Touchscreens</span>
+              <span>Room scenes</span>
+            </div>
+            <Link className="text-link" href="/control4">
+              Discover the Control4 approach <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section className="section section--paper" aria-labelledby="destinations-heading">
         <div className="container">
           <div id="destinations-heading">
             <SectionHeading
-              eyebrow="Explore Synchro Spaces"
-              title="Start with the kind of space you are creating."
-              intro="Each area has its own page, with the detail kept where it belongs."
+              eyebrow="Projects"
+              title="Explore by project and place."
+              intro="Begin with selected visual stories, then follow the residential or commercial path for the detail relevant to your space."
             />
           </div>
           <div className="gateway-grid">
-            {destinations.map((destination) => (
+            {projectDestinations.map((destination) => (
               <article className="gateway-card" key={destination.href}>
                 <Link href={destination.href}>
                   <div className="gateway-card__media">

@@ -3,13 +3,33 @@ import { expect, test } from "@playwright/test";
 
 test("principal navigation and responsive shell work", async ({ page }) => {
   await page.goto("/", { waitUntil: "domcontentloaded" });
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("Technology that belongs");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Beautiful control");
   await page.getByRole("link", { name: "Projects", exact: true }).first().click();
   await expect(page).toHaveURL(/\/projects$/);
   await expect(page.getByRole("heading", { level: 1, name: /Look closer/ })).toBeVisible();
   await expect.poll(() => page.evaluate(
     () => document.documentElement.scrollWidth > document.documentElement.clientWidth
   )).toBe(false);
+});
+
+test("desktop navigation puts Control4 first and nests project paths", async ({ page }) => {
+  test.skip((page.viewportSize()?.width ?? 0) <= 1200, "Desktop navigation test");
+  await page.goto("/", { waitUntil: "domcontentloaded" });
+
+  const navigation = page.getByRole("navigation", { name: "Primary navigation" });
+  await expect(navigation.locator(":scope > a").first()).toHaveText("Control4");
+  await expect(navigation.locator(":scope > a", { hasText: "Residential" })).toHaveCount(0);
+  await expect(navigation.locator(":scope > a", { hasText: "Commercial" })).toHaveCount(0);
+
+  const trigger = navigation.getByRole("button", { name: "Show project sections" });
+  await expect(trigger).toHaveAttribute("data-hydrated", "true");
+  await trigger.click();
+  await expect(trigger).toHaveAttribute("aria-expanded", "true");
+  await expect(navigation.getByRole("link", { name: "Residential" })).toBeVisible();
+  await expect(navigation.getByRole("link", { name: "Commercial" })).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(trigger).toHaveAttribute("aria-expanded", "false");
+  await expect(trigger).toBeFocused();
 });
 
 test("mobile menu is keyboard operable", async ({ page }) => {
@@ -53,7 +73,7 @@ test("consent defaults to necessary-only behaviour", async ({ page }) => {
   expect(consent.necessary).toBe(true);
 });
 
-for (const path of ["/", "/residential", "/commercial", "/projects", "/contact"]) {
+for (const path of ["/", "/control4", "/residential", "/commercial", "/projects", "/contact"]) {
   test(`axe smoke: ${path}`, async ({ page }) => {
     await page.goto(path, { waitUntil: "domcontentloaded" });
     await page.evaluate(() => localStorage.setItem("site-consent-v1", JSON.stringify({ necessary: true, analytics: false })));

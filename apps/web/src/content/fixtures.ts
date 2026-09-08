@@ -51,6 +51,34 @@ export const integrationRack = {
   height: 1254
 };
 
+export const control4KeypadWall = {
+  src: "/images/synchro-spaces/control4-keypad-wall.jpeg",
+  alt: "Black scene keypad mounted on a charcoal wall beside a softly focused dining space",
+  width: 1600,
+  height: 1066
+};
+
+export const control4TouchscreenEvening = {
+  src: "/images/synchro-spaces/control4-touchscreen-evening.jpeg",
+  alt: "Wall-mounted home-control touchscreen and scene keypad illuminated in a dim interior",
+  width: 1067,
+  height: 1600
+};
+
+export const control4TouchscreenHallway = {
+  src: "/images/synchro-spaces/control4-touchscreen-hallway.jpeg",
+  alt: "Home-control touchscreen and scene keypad beside a warmly lit residential hallway",
+  width: 1600,
+  height: 1067
+};
+
+export const control4KeypadCollection = {
+  src: "/images/synchro-spaces/control4-keypad-collection.jpeg",
+  alt: "Three architectural wall controls in bronze, warm silver and brushed silver finishes",
+  width: 1600,
+  height: 1066
+};
+
 export const services: Service[] = [
   {
     id: "service-whole-home",
@@ -198,8 +226,8 @@ export const projects: Project[] = [
       "Review each scene with the people who will use it every day."
     ],
     systems: ["Scene keypads", "Lighting control", "Curtain control", "Daily routines"],
-    image: sceneKeypadThree,
-    gallery: [sceneKeypadThree, sceneKeypadSix, residenceTwilight],
+    image: control4TouchscreenHallway,
+    gallery: [control4TouchscreenHallway, control4KeypadWall, control4TouchscreenEvening, sceneKeypadThree, sceneKeypadSix],
     relatedServiceSlugs: ["whole-home-automation", "architectural-lighting", "comfort-energy"],
     seoTitle: "Scenes at a Touch | Intuitive Smart-Home Control",
     seoDescription: "Explore scene-led smart-home controls built around clear actions such as Welcome, Curtain and Away.",

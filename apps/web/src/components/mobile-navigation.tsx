@@ -1,20 +1,11 @@
 "use client";
 
-import { Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { primaryNavigation } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
 import { useHydrated } from "@/hooks/use-hydrated";
-
-const links = [
-  ["Residential", "/residential"],
-  ["Commercial", "/commercial"],
-  ["Projects", "/projects"],
-  ["Control4", "/control4"],
-  ["Process", "/process"],
-  ["About", "/about"],
-  ["Resources", "/resources"]
-] as const;
 
 export function MobileNavigation() {
   const hydrated = useHydrated();
@@ -95,11 +86,39 @@ export function MobileNavigation() {
       </button>
       <div ref={panel} id="mobile-navigation" className="mobile-panel" data-open={open} aria-hidden={!open}>
         <nav className="container mobile-links" aria-label="Mobile navigation">
-          {links.map(([label, href], index) => (
-            <Link key={href} href={href} ref={index === 0 ? firstLink : undefined} onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}>
-              {label}<span aria-hidden="true">↗</span>
-            </Link>
-          ))}
+          {primaryNavigation.map((item, index) => {
+            const link = (
+              <Link
+                key={item.href}
+                href={item.href}
+                ref={index === 0 ? firstLink : undefined}
+                onClick={() => setOpen(false)}
+                tabIndex={open ? 0 : -1}
+              >
+                {item.label}<ArrowUpRight size={18} aria-hidden="true" />
+              </Link>
+            );
+
+            if (!("children" in item)) return link;
+
+            return (
+              <div className="mobile-links__group" key={item.href} role="group" aria-label="Project sections">
+                {link}
+                <div className="mobile-links__children">
+                  {item.children.map((child) => (
+                    <Link
+                      key={child.href}
+                      href={child.href}
+                      onClick={() => setOpen(false)}
+                      tabIndex={open ? 0 : -1}
+                    >
+                      {child.label}<ArrowUpRight size={16} aria-hidden="true" />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
           {instagram ? (
             <a
               href={instagram}
@@ -109,7 +128,7 @@ export function MobileNavigation() {
               onClick={() => setOpen(false)}
               tabIndex={open ? 0 : -1}
             >
-              Instagram <span aria-hidden="true">↗</span>
+              Instagram <ArrowUpRight size={18} aria-hidden="true" />
             </a>
           ) : null}
           <Link className="button button--primary" href="/contact" onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}>Plan a consultation</Link>
