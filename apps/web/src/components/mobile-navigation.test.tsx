@@ -18,6 +18,10 @@ describe("MobileNavigation", () => {
     expect(within(projectSections).getByRole("link", { name: "Projects" })).toBeVisible();
     expect(within(projectSections).getByRole("link", { name: "Residential" })).toHaveAttribute("href", "/residential");
     expect(within(projectSections).getByRole("link", { name: "Commercial" })).toHaveAttribute("href", "/commercial");
+    const processLink = within(navigation).getByRole("link", { name: "Process" });
+    const servicesLink = within(navigation).getByRole("link", { name: "Our services" });
+    expect(servicesLink).toHaveAttribute("href", "/services");
+    expect(processLink.compareDocumentPosition(servicesLink) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     await user.keyboard("{Escape}");
     expect(screen.getByRole("button", { name: "Open navigation" })).toHaveAttribute("aria-expanded", "false");
     expect(trigger).toHaveFocus();

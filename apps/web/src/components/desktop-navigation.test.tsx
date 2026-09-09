@@ -13,6 +13,9 @@ describe("DesktopNavigation", () => {
     expect(topLevelLinks[0]).toHaveAccessibleName("Control4");
     expect([...topLevelLinks].some((link) => link.textContent === "Residential")).toBe(false);
     expect([...topLevelLinks].some((link) => link.textContent === "Commercial")).toBe(false);
+    const labels = [...navigation.querySelectorAll(":scope > a, :scope > .desktop-nav__group > a")].map((link) => link.textContent);
+    expect(labels.indexOf("Our services")).toBe(labels.indexOf("Process") + 1);
+    expect(within(navigation).getByRole("link", { name: "Our services" })).toHaveAttribute("href", "/services");
 
     const trigger = within(navigation).getByRole("button", { name: "Show project sections" });
     await user.click(trigger);

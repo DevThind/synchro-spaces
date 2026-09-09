@@ -41,10 +41,19 @@ export function ResponsiveImage({ image, fill = false, priority = false, sizes =
 }
 
 export function ServiceCard({ service, index }: { service: Service; index: number }) {
+  const titleId = `service-${service.slug}-title`;
+
   return (
-    <article className="service-card"><span className="card-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-      <h3 className="heading-md">{service.title}</h3><p>{service.summary}</p>
-      <Link className="text-link" href={`/residential/${service.slug}`} data-analytics-event="service_cta_click" data-analytics-label={service.slug}>Explore solution <ArrowRight size={16} aria-hidden="true" /></Link>
+    <article className="service-card service-card--image" aria-labelledby={titleId}>
+      <div className="service-card__media" data-service={service.slug}>
+        <ResponsiveImage image={service.image} fill sizes="(max-width: 560px) 100vw, (max-width: 780px) 50vw, 33vw" />
+      </div>
+      <div className="service-card__body">
+        <span className="card-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+        <h3 id={titleId} className="heading-md">{service.title}</h3>
+        <p>{service.summary}</p>
+        <Link className="text-link" href={`/residential/${service.slug}`} aria-label={`Explore solution: ${service.title}`} data-analytics-event="service_cta_click" data-analytics-label={service.slug}>Explore solution <ArrowRight size={16} aria-hidden="true" /></Link>
+      </div>
     </article>
   );
 }

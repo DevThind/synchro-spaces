@@ -5,7 +5,7 @@ import { siteConfig } from "@/config/site";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [services, projects, areas, articles] = await Promise.all([getServices(), getProjects(), getServiceAreas(), getArticles()]);
   const publishedAreas = areas.filter((area) => area.published && !area.title.includes("["));
-  const staticPaths = ["/", "/residential", "/commercial", "/projects", "/control4", "/technology-partners", "/process", "/about", "/resources", "/contact", "/privacy", "/terms", "/accessibility"];
+  const staticPaths = ["/", "/residential", "/commercial", "/projects", "/control4", "/technology-partners", "/process", "/services", "/about", "/resources", "/contact", "/privacy", "/terms", "/accessibility"];
   const paths = [
     ...staticPaths,
     ...(publishedAreas.length ? ["/service-areas"] : []),

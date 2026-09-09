@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { hasVerifiedEmail, hasVerifiedPhone, siteConfig } from "@/config/site";
+import { control4Logo } from "@/content/fixtures";
+import { CookiePreferences } from "./cookie-preferences";
+import { ResponsiveImage } from "./ui";
 import { BrandMark } from "./header";
 
 const projectLinks = [
@@ -34,7 +37,7 @@ export function Footer() {
         <div>
           <h2 className="footer-title">Explore</h2>
           <nav className="footer-links" aria-label="Explore links">
-            <Link href="/control4">Control4</Link><Link href="/process">Process</Link><Link href="/about">About</Link>
+            <Link href="/control4">Control4</Link><Link href="/process">Process</Link><Link href="/services">Our services</Link><Link href="/about">About</Link>
             <Link href="/technology-partners">Technology approach</Link><Link href="/service-areas">Project locations</Link><Link href="/contact">Contact</Link>
           </nav>
         </div>
@@ -45,10 +48,19 @@ export function Footer() {
           </nav>
         </div>
       </div>
+      <div className="container footer-platform">
+        <Link className="footer-platform__link" href="/control4" aria-label="Explore Control4 integration">
+          <span className="footer-platform__logo">
+            <ResponsiveImage image={control4Logo} fill sizes="(max-width: 560px) 11rem, 16rem" />
+          </span>
+        </Link>
+        <p>Control4 is a registered trademark of Control4 Corporation. All rights reserved. Products and compatibility are confirmed per project; inclusion does not state a manufacturer partnership or dealer status.</p>
+      </div>
       <div className="container footer-bottom">
         <span>© {new Date().getFullYear()} {siteConfig.companyName}.</span>
         <span>This public website does not control or connect to customer automation systems.</span>
       </div>
+      <CookiePreferences />
     </footer>
   );
 }

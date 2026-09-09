@@ -7,8 +7,8 @@ const publicRoutes = [
   "/residential/architectural-lighting",
   "/residential/audio-video",
   "/residential/residential-networking",
+  "/residential/integrated-security",
   "/residential/comfort-energy",
-  "/residential/access-security-readiness",
   "/commercial",
   "/projects",
   "/projects/residence-after-dark",
@@ -17,6 +17,7 @@ const publicRoutes = [
   "/control4",
   "/technology-partners",
   "/process",
+  "/services",
   "/about",
   "/resources",
   "/resources/when-to-involve-an-automation-integrator",
@@ -80,7 +81,7 @@ test("desktop sections share one alignment rail", async ({ page }, testInfo) => 
     );
   });
 
-  for (const width of [1200, 1201, 1440, 1920]) {
+  for (const width of [1200, 1201, 1280, 1281, 1440, 1920]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/", { waitUntil: "domcontentloaded" });
     await expect(page.locator("#intro-heading")).toBeVisible();
@@ -117,7 +118,7 @@ test("desktop sections share one alignment rail", async ({ page }, testInfo) => 
     ).toBeLessThanOrEqual(1);
     expect(Math.abs(metrics.introEyebrow - metrics.introHeading)).toBeLessThanOrEqual(1);
 
-    if (width <= 1200) {
+    if (width <= 1280) {
       expect(metrics.desktopNavigation).toBe("none");
       expect(metrics.compactNavigation).not.toBe("none");
     } else {
@@ -206,14 +207,12 @@ test("privacy controls remain reachable on a short phone", async ({ page }, test
 
   const banner = page.locator(".cookie-banner");
   await expect(banner).toBeVisible();
+  await expect(banner).toHaveCSS("position", "static");
   const choose = banner.getByRole("button", { name: "Choose" });
   const chooseBox = await choose.boundingBox();
   expect(chooseBox?.height).toBeGreaterThanOrEqual(44);
   await choose.click();
 
-  const bannerBox = await banner.boundingBox();
-  expect(bannerBox?.y ?? -1).toBeGreaterThanOrEqual(0);
-  expect((bannerBox?.y ?? 0) + (bannerBox?.height ?? 0)).toBeLessThanOrEqual(400);
   await expect(banner.getByRole("button", { name: "Necessary only" })).toBeVisible();
   await banner.getByRole("button", { name: "Necessary only" }).click();
 

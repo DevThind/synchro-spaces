@@ -4,14 +4,14 @@
 
 - [x] Public business name: Synchro Spaces
 - [x] Verified Instagram profile: `https://www.instagram.com/synchro_spaces/`
-- [x] Six user-supplied images integrated into the residential story and supporting site sections
+- [x] Seventeen user-supplied images integrated into the residential, Control4, and services stories
 - [x] Unknown phone, email, address, hours, and location values left empty and omitted
 - [x] Organization JSON-LD includes the verified identity and Instagram URL without unverified contact or location fields
 
 ## Identity and operations still needed
 
 - [ ] Legal entity name, if different from the public business name
-- [ ] Final canonical domain
+- [x] Final canonical domain: `https://www.synchro-spaces.com`
 - [ ] Phone, email, address, hours, and exact service boundary, if Synchro Spaces wants any of them published
 - [ ] Approved consultation CTA and response-time wording
 - [ ] Named privacy and accessibility contacts
@@ -19,7 +19,8 @@
 
 ## Claims and content
 
-- [ ] Written confirmation of publication rights for all six supplied images
+- [ ] Written confirmation of publication rights for all seventeen supplied images
+- [ ] Written approval for the supplied Control4 logo placement and required trademark treatment
 - [ ] Confirmation of any required photographer, property-owner, installer, client, or third-party credits/permissions
 - [ ] Approved project facts, location precision, scope, systems, outcomes, and preferred anonymization
 - [ ] Approved Control4 dealer/status wording with evidence

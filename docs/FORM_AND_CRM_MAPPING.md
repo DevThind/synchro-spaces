@@ -15,9 +15,10 @@
 
 The form deliberately excludes budget, passwords, controller credentials, alarm/door codes, network credentials, detailed security layouts, and payment data.
 
+`servicesOfInterest` currently accepts `automation`, `lighting-shading`, `audio-video`, `networking`, `comfort`, `access-readiness`, `remote-management`, and `not-sure`. Confirm the receiving CRM has the same approved option before enabling live delivery.
+
 ## Provider setup
 
 Set `CRM_PROVIDER` to `hubspot` or `gohighlevel` and provide the matching credentials. Confirm custom property identifiers against the client portal before production; the adapter fields are a safe implementation starting point, not permission to mutate a live CRM without review. Set `EMAIL_PROVIDER` to `postmark` or `resend`, then configure a verified sender and team recipient. With absent or incomplete values, development adapters perform no external write.
 
 Test mapping in a sandbox account, verify deduplication/consent rules, confirm ownership/routing, and record the retention/deletion workflow before launch.
-

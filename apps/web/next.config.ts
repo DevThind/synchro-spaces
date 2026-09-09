@@ -19,6 +19,7 @@ const contentSecurityPolicy = [
 
 const nextConfig: NextConfig = {
   agentRules: false,
+  devIndicators: false,
   allowedDevOrigins: ["localhost", "127.0.0.1"],
   poweredByHeader: false,
   experimental: {
@@ -41,9 +42,6 @@ const nextConfig: NextConfig = {
         ]
       }
     ];
-  },
-  async redirects() {
-    return [{ source: "/services", destination: "/residential", permanent: true }];
   }
 };
 

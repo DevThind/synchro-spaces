@@ -4,16 +4,17 @@
 
 - The website and Studio are branded for Synchro Spaces.
 - The verified [@synchro_spaces](https://www.instagram.com/synchro_spaces/) profile is linked from the public site and included in Organization JSON-LD.
-- Six user-supplied images are integrated under `apps/web/public/images/synchro-spaces/`.
+- Seventeen user-supplied images are integrated under `apps/web/public/images/synchro-spaces/`.
+- The canonical public origin is `https://www.synchro-spaces.com`.
 - Phone, email, address, hours, and service geography remain empty and are omitted from public and structured output.
-- Image publication rights, the canonical production domain, live delivery integrations, legal copy, and any dealer/partner claims are not yet approved.
+- Image and Control4-logo publication rights, live delivery integrations, legal copy, and any dealer/partner claims are not yet approved.
 
 ## Launch gates
 
 Do not treat implementation completion as launch approval. Before production indexing or promotion, obtain:
 
-1. The final canonical domain.
-2. Written confirmation of publication rights for all six supplied images and any required credits or third-party permissions.
+1. Written confirmation of publication rights for all seventeen supplied images and any required credits or third-party permissions.
+2. Written approval for the supplied Control4 logo placement and required trademark treatment.
 3. Phone, email, address, hours, or service-location details only if Synchro Spaces wants them published.
 4. CRM/email provider selection, field mapping, credentials, sender addresses, and domain authentication if live lead delivery is required.
 5. Jurisdiction-appropriate privacy, cookie, retention, terms, accessibility, and enquiry-consent review.
@@ -36,4 +37,4 @@ Create/confirm the production project and dataset, CORS origins, least-privilege
 5. Review preview deployment with the client and obtain content/brand/legal approval.
 6. Authorize production deployment and DNS separately.
 
-Handover should include repository/admin ownership, vendor account ownership, environment inventory (never secret values), the six-image rights/credit record, content workflow, backup/export process, incident contacts, analytics definitions, support boundaries, approved claims evidence, and a dated maintenance plan.
+Handover should include repository/admin ownership, vendor account ownership, environment inventory (never secret values), the seventeen-image and logo rights/credit record, content workflow, backup/export process, incident contacts, analytics definitions, support boundaries, approved claims evidence, and a dated maintenance plan.

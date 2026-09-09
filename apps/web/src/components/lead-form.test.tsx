@@ -9,6 +9,7 @@ describe("LeadForm", () => {
   it("shows an accessible summary for an incomplete request", async () => {
     const user = userEvent.setup();
     render(<LeadForm />);
+    expect(screen.getByLabelText("Remote management")).toBeInTheDocument();
     await user.click(screen.getByRole("button", { name: "Send consultation request" }));
     expect(await screen.findByRole("alert")).toHaveTextContent("Please review your request");
   });
@@ -35,4 +36,3 @@ describe("LeadForm", () => {
     expect(fetch).toHaveBeenCalledTimes(1);
   });
 });
-

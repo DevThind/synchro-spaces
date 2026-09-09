@@ -8,7 +8,7 @@ export const buildTypeOptions = ["new-build", "renovation", "retrofit", "not-sur
 export const stageOptions = ["exploring", "design", "pre-construction", "under-construction", "existing-space"] as const;
 export const contactMethodOptions = ["email", "phone", "either"] as const;
 export const timingOptions = ["morning", "afternoon", "evening", "flexible"] as const;
-export const serviceOptions = ["automation", "lighting-shading", "audio-video", "networking", "comfort", "access-readiness", "not-sure"] as const;
+export const serviceOptions = ["automation", "lighting-shading", "audio-video", "networking", "comfort", "access-readiness", "remote-management", "not-sure"] as const;
 
 export const leadSchema = z.object({
   name: trimmed("Name", 100),
@@ -29,4 +29,3 @@ export const leadSchema = z.object({
 }).strict();
 
 export type LeadPayload = z.infer<typeof leadSchema>;
-

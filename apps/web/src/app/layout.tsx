@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity/visual-editing";
 import { Analytics } from "@/components/analytics";
-import { CookiePreferences } from "@/components/cookie-preferences";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { JsonLd } from "@/components/json-ld";
@@ -21,7 +20,7 @@ export const metadata: Metadata = {
   manifest: "/manifest.webmanifest"
 };
 
-export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#0e0e0d", colorScheme: "light dark" };
+export const viewport: Viewport = { width: "device-width", initialScale: 1, viewportFit: "cover", themeColor: "#0e0e0d", colorScheme: "light dark" };
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const previewEnabled = process.env.NEXT_PUBLIC_CONTENT_MODE === "sanity" ? (await draftMode()).isEnabled : false;
@@ -32,7 +31,6 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
         <Header />
         <main id="main-content">{children}</main>
         <Footer />
-        <CookiePreferences />
         <Analytics />
         {previewEnabled ? <VisualEditing /> : null}
         <JsonLd value={organizationJsonLd()} />

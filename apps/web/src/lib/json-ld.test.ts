@@ -7,7 +7,7 @@ describe("JSON-LD generators", () => {
     const value = breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Projects", path: "/projects" }]);
     expect(value["@type"]).toBe("BreadcrumbList");
     expect(value.itemListElement).toHaveLength(2);
-    expect(JSON.stringify(value)).toContain("http://localhost:3000/projects");
+    expect(JSON.stringify(value)).toContain("https://www.synchro-spaces.com/projects");
   });
 
   it("maps organization, service, article and eligible FAQ data", () => {

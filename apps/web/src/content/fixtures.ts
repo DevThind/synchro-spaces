@@ -79,6 +79,55 @@ export const control4KeypadCollection = {
   height: 1066
 };
 
+export const control4Logo = {
+  src: "/images/synchro-spaces/control4-logo.jpeg",
+  alt: "Control4",
+  width: 1206,
+  height: 982
+};
+
+export const videoDoorStation = {
+  src: "/images/synchro-spaces/video-door-station.jpeg",
+  alt: "Person pressing a wall-mounted video door station at a brick entrance",
+  width: 1206,
+  height: 670
+};
+
+export const exteriorSecurityCamera = {
+  src: "/images/synchro-spaces/exterior-security-camera.jpeg",
+  alt: "Exterior security camera mounted beneath the eaves of a home",
+  width: 1206,
+  height: 773
+};
+
+export const handheldMediaController = {
+  src: "/images/synchro-spaces/handheld-media-controller.jpeg",
+  alt: "Handheld media controller on a charging base with a television in the background",
+  width: 1206,
+  height: 801
+};
+
+export const homeTheatre = {
+  src: "/images/synchro-spaces/home-theatre.jpeg",
+  alt: "Home theatre with a projection screen and built-in audio equipment",
+  width: 1206,
+  height: 818
+};
+
+export const cinemaRoom = {
+  src: "/images/synchro-spaces/cinema-room.jpeg",
+  alt: "Dedicated cinema room with three displays and integrated ceiling speakers",
+  width: 1206,
+  height: 820
+};
+
+export const audioTouchscreen = {
+  src: "/images/synchro-spaces/audio-touchscreen.jpeg",
+  alt: "Wall-mounted touchscreen displaying music controls beside a softly furnished living room",
+  width: 1206,
+  height: 923
+};
+
 export const services: Service[] = [
   {
     id: "service-whole-home",
@@ -92,7 +141,7 @@ export const services: Service[] = [
       "Synchro Spaces begins with the rooms, routines and project constraints, then coordinates the infrastructure and control intent needed for a composed result."
     ],
     outcomes: ["Consistent room controls", "Purposeful scenes and schedules", "A clear plan for connected systems"],
-    image: residenceNight,
+    image: audioTouchscreen,
     relatedServiceSlugs: ["architectural-lighting", "residential-networking"],
     seoTitle: "Whole-Home Automation",
     seoDescription: "Explore whole-home automation planned around lighting, curtains, comfort, entertainment and everyday routines.",
@@ -110,8 +159,8 @@ export const services: Service[] = [
       "The practical details—loads, power, curtain provision, device locations and manual overrides—are reviewed against the project before equipment is selected."
     ],
     outcomes: ["Clear scene-based control", "Coordinated curtain provision", "Simple local control and overrides"],
-    image: sceneKeypadThree,
-    relatedServiceSlugs: ["whole-home-automation", "comfort-energy"],
+    image: control4TouchscreenHallway,
+    relatedServiceSlugs: ["whole-home-automation", "integrated-security"],
     seoTitle: "Smart Lighting & Curtain Control",
     seoDescription: "Plan integrated lighting, curtain control and intuitive scenes around the way each room is used.",
     published: true
@@ -128,7 +177,7 @@ export const services: Service[] = [
       "The goal is straightforward operation: choose what you want to watch or hear, select the room, and let the supporting system handle the sequence."
     ],
     outcomes: ["Simple source selection", "Discreet equipment planning", "Consistent room-to-room control"],
-    image: integrationRack,
+    image: homeTheatre,
     relatedServiceSlugs: ["whole-home-automation", "residential-networking"],
     seoTitle: "Integrated Audio, Video & Entertainment",
     seoDescription: "Plan integrated audio, video and entertainment with simple control and discreet infrastructure.",
@@ -153,6 +202,24 @@ export const services: Service[] = [
     published: true
   },
   {
+    id: "service-security",
+    title: "Integrated security",
+    slug: "integrated-security",
+    eyebrow: "Awareness, considered",
+    summary: "Bring compatible cameras, video door stations, locks, gates, sensors and selected alarm controls into one considered interface.",
+    audience: "both",
+    body: [
+      "Integrated security begins with clear visibility and deliberate control. Compatible cameras, video door stations, access devices and selected alarm interfaces can be coordinated so useful status is easier to understand without exposing sensitive detail.",
+      "Every project is reviewed for compatibility and clear responsibility boundaries. Monitoring, emergency response and life-safety functions remain with the relevant specialist providers; passwords, alarm codes, door codes and detailed security layouts are never requested through this public website."
+    ],
+    outcomes: ["Coordinated camera and entry views", "Compatibility and privacy reviewed early", "Clear monitoring and life-safety boundaries"],
+    image: exteriorSecurityCamera,
+    relatedServiceSlugs: ["whole-home-automation", "residential-networking"],
+    seoTitle: "Integrated Home Security",
+    seoDescription: "Plan compatible cameras, entry devices and selected security interfaces with clear integration, privacy and life-safety boundaries.",
+    published: true
+  },
+  {
     id: "service-comfort",
     title: "Comfort & daily routines",
     slug: "comfort-energy",
@@ -164,28 +231,10 @@ export const services: Service[] = [
       "Every routine is shaped around the occupants and tested with clear manual overrides, so automation remains helpful rather than intrusive."
     ],
     outcomes: ["Memorable everyday scenes", "Straightforward manual overrides", "Controls shaped around real routines"],
-    image: sceneKeypadSix,
+    image: control4KeypadWall,
     relatedServiceSlugs: ["architectural-lighting", "whole-home-automation"],
     seoTitle: "Smart-Home Scenes & Daily Routines",
     seoDescription: "Design useful Welcome, Away, Entertain and Goodnight scenes around the routines of a connected space.",
-    published: true
-  },
-  {
-    id: "service-access",
-    title: "Smart access readiness",
-    slug: "access-security-readiness",
-    eyebrow: "Access, considered carefully",
-    summary: "Plan convenient entry experiences with compatible devices, clear boundaries and privacy-aware setup.",
-    audience: "both",
-    body: [
-      "Connected locks, entry devices and selected security interfaces require careful compatibility review and a clear division of responsibility. Convenience must never blur the boundaries around life-safety or monitored systems.",
-      "Passwords, alarm codes, door codes and detailed security layouts are never requested through this public website."
-    ],
-    outcomes: ["Compatibility reviewed before selection", "Clear integration boundaries", "No security credentials collected online"],
-    image: smartLock,
-    relatedServiceSlugs: ["whole-home-automation", "residential-networking"],
-    seoTitle: "Smart Access Integration Readiness",
-    seoDescription: "Plan convenient smart access with compatible devices, clear integration boundaries and privacy-aware setup.",
     published: true
   }
 ];

@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 
 test("principal navigation and responsive shell work", async ({ page }) => {
   await page.goto("/", { waitUntil: "domcontentloaded" });
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("Beautiful control");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Intelligence you can feel. Not see.");
   await page.getByRole("link", { name: "Projects", exact: true }).first().click();
   await expect(page).toHaveURL(/\/projects$/);
   await expect(page.getByRole("heading", { level: 1, name: /Look closer/ })).toBeVisible();
@@ -13,13 +13,15 @@ test("principal navigation and responsive shell work", async ({ page }) => {
 });
 
 test("desktop navigation puts Control4 first and nests project paths", async ({ page }) => {
-  test.skip((page.viewportSize()?.width ?? 0) <= 1200, "Desktop navigation test");
+  test.skip((page.viewportSize()?.width ?? 0) <= 1280, "Desktop navigation test");
   await page.goto("/", { waitUntil: "domcontentloaded" });
 
   const navigation = page.getByRole("navigation", { name: "Primary navigation" });
   await expect(navigation.locator(":scope > a").first()).toHaveText("Control4");
   await expect(navigation.locator(":scope > a", { hasText: "Residential" })).toHaveCount(0);
   await expect(navigation.locator(":scope > a", { hasText: "Commercial" })).toHaveCount(0);
+  const topLevelLabels = await navigation.locator(":scope > a, :scope > .desktop-nav__group > a").allTextContents();
+  expect(topLevelLabels.indexOf("Our services")).toBe(topLevelLabels.indexOf("Process") + 1);
 
   const trigger = navigation.getByRole("button", { name: "Show project sections" });
   await expect(trigger).toHaveAttribute("data-hydrated", "true");
@@ -33,7 +35,7 @@ test("desktop navigation puts Control4 first and nests project paths", async ({ 
 });
 
 test("mobile menu is keyboard operable", async ({ page }) => {
-  test.skip((page.viewportSize()?.width ?? Number.POSITIVE_INFINITY) > 1200, "Compact navigation test");
+  test.skip((page.viewportSize()?.width ?? Number.POSITIVE_INFINITY) > 1280, "Compact navigation test");
   await page.goto("/", { waitUntil: "domcontentloaded" });
   const trigger = page.getByRole("button", { name: "Open navigation" });
   await expect(trigger).toHaveAttribute("data-hydrated", "true");
@@ -42,6 +44,23 @@ test("mobile menu is keyboard operable", async ({ page }) => {
   await page.keyboard.press("Escape");
   await expect(trigger).toHaveAttribute("aria-expanded", "false");
   await expect(trigger).toBeFocused();
+});
+
+test("residential solutions use six image-led service cards", async ({ page }) => {
+  await page.goto("/residential", { waitUntil: "domcontentloaded" });
+
+  const cards = page.locator(".residential-service-grid > .service-card--image");
+  await expect(cards).toHaveCount(6);
+  await expect(cards.locator("img")).toHaveCount(6);
+  await expect(cards.locator("h3")).toHaveText([
+    "Whole-home automation",
+    "Lighting & curtain control",
+    "Audio, video & entertainment",
+    "Networking & infrastructure",
+    "Integrated security",
+    "Comfort & daily routines"
+  ]);
+  await expect(page.getByRole("heading", { name: "Smart access readiness" })).toHaveCount(0);
 });
 
 test("development consultation flow confirms server success", async ({ page }) => {
@@ -73,7 +92,7 @@ test("consent defaults to necessary-only behaviour", async ({ page }) => {
   expect(consent.necessary).toBe(true);
 });
 
-for (const path of ["/", "/control4", "/residential", "/commercial", "/projects", "/contact"]) {
+for (const path of ["/", "/control4", "/residential", "/commercial", "/projects", "/services", "/contact"]) {
   test(`axe smoke: ${path}`, async ({ page }) => {
     await page.goto(path, { waitUntil: "domcontentloaded" });
     await page.evaluate(() => localStorage.setItem("site-consent-v1", JSON.stringify({ necessary: true, analytics: false })));

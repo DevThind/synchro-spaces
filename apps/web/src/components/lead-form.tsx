@@ -12,7 +12,7 @@ import { leadSchema, type LeadPayload } from "@/lib/lead-schema";
 
 type LeadInput = z.input<typeof leadSchema>;
 const serviceChoices = [
-  ["automation", "Whole-home / space automation"], ["lighting-shading", "Lighting & curtain control"], ["audio-video", "Audio, video & entertainment"], ["networking", "Networking & infrastructure"], ["comfort", "Comfort & daily routines"], ["access-readiness", "Smart access readiness"], ["not-sure", "Not sure yet"]
+  ["automation", "Whole-home / space automation"], ["lighting-shading", "Lighting & curtain control"], ["audio-video", "Audio systems & entertainment"], ["networking", "Networking & infrastructure"], ["comfort", "Comfort & daily routines"], ["access-readiness", "Integrated security & access"], ["remote-management", "Remote management"], ["not-sure", "Not sure yet"]
 ] as const;
 
 export function LeadForm() {

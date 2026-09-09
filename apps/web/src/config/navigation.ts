@@ -10,6 +10,7 @@ export const primaryNavigation = [
     ]
   },
   { label: "Process", href: "/process" },
+  { label: "Our services", href: "/services" },
   { label: "About", href: "/about" },
   { label: "Resources", href: "/resources" }
 ] as const;

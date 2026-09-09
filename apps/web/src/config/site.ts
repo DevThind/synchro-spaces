@@ -17,7 +17,7 @@ export type SiteConfig = {
 export const siteConfig: SiteConfig = {
   companyName: "Synchro Spaces",
   shortDescription:
-    "Thoughtful smart-home integration for lighting, scenes, entertainment, access and connected infrastructure.",
+    "Thoughtful smart-home integration for lighting, scenes, entertainment, integrated security and connected infrastructure.",
   phone: "",
   email: "",
   address: "",
@@ -32,8 +32,8 @@ export const siteConfig: SiteConfig = {
   seo: {
     title: "Thoughtful Smart-Home Integration",
     description:
-      "Synchro Spaces brings lighting, scenes, entertainment, access and connected infrastructure into one calm smart-space experience.",
-    siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+      "Synchro Spaces brings lighting, scenes, entertainment, integrated security and connected infrastructure into one calm smart-space experience.",
+    siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.synchro-spaces.com",
     locale: "en_IN"
   },
   retentionNotice:

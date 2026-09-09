@@ -15,9 +15,9 @@ import {
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
-  title: "Thoughtful Smart-Home Integration",
+  title: "Intelligence You Can Feel, Not See",
   description:
-    "Synchro Spaces brings lighting, scenes, entertainment, access and connected infrastructure into one calm smart-space experience.",
+    "Synchro Spaces brings lighting, scenes, entertainment, integrated security and connected infrastructure into one calm smart-space experience.",
   path: "/",
   image: control4KeypadWall.src
 });
@@ -35,7 +35,7 @@ const projectDestinations = [
     eyebrow: "Projects · Residential",
     title: "Homes",
     description:
-      "Explore whole-home control, lighting, curtains, entertainment, access and infrastructure.",
+      "Explore whole-home control, lighting, curtains, entertainment, integrated security and infrastructure.",
     href: "/residential",
     image: residenceTwilight
   },
@@ -52,6 +52,7 @@ const projectDestinations = [
 const exploreLinks = [
   { label: "Control4", href: "/control4" },
   { label: "Our process", href: "/process" },
+  { label: "Our services", href: "/services" },
   { label: "Technology approach", href: "/technology-partners" },
   { label: "About us", href: "/about" },
   { label: "Planning guides", href: "/resources" }
@@ -68,7 +69,7 @@ export default function HomePage() {
           <div className="hero-copy stack">
             <span className="eyebrow">Synchro Spaces · Smart living, composed</span>
             <h1 id="hero-heading" className="display">
-              Beautiful control, built into the space.
+              Intelligence you can feel. Not see.
             </h1>
             <p className="hero-lede">
               Lighting, curtains, comfort and entertainment—brought together in
@@ -124,7 +125,6 @@ export default function HomePage() {
             <ResponsiveImage
               image={control4TouchscreenHallway}
               fill
-              priority
               sizes="(max-width: 780px) 100vw, 58vw"
             />
             <span className="image-index" aria-hidden="true">01 / Control in context</span>
@@ -160,14 +160,16 @@ export default function HomePage() {
             />
           </div>
           <div className="gateway-grid">
-            {projectDestinations.map((destination) => (
+            {projectDestinations.map((destination, index) => (
               <article className="gateway-card" key={destination.href}>
                 <Link href={destination.href}>
                   <div className="gateway-card__media">
                     <ResponsiveImage
                       image={destination.image}
                       fill
-                      sizes="(max-width: 780px) 100vw, 33vw"
+                      sizes={index === projectDestinations.length - 1
+                        ? "(max-width: 780px) 100vw, 33vw"
+                        : "(max-width: 560px) 100vw, (max-width: 780px) 50vw, 33vw"}
                     />
                   </div>
                   <div className="gateway-card__copy">
