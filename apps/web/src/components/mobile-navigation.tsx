@@ -2,6 +2,7 @@
 
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { primaryNavigation } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
@@ -9,11 +10,33 @@ import { useHydrated } from "@/hooks/use-hydrated";
 
 export function MobileNavigation() {
   const hydrated = useHydrated();
+  const pathname = usePathname();
   const instagram = siteConfig.socialProfiles.instagram;
   const [open, setOpen] = useState(false);
   const trigger = useRef<HTMLButtonElement>(null);
   const panel = useRef<HTMLDivElement>(null);
   const firstLink = useRef<HTMLAnchorElement>(null);
+  const projectsSectionActive = ["/projects", "/residential", "/commercial"].some(
+    (route) => pathname === route || pathname.startsWith(`${route}/`)
+  );
+
+  useEffect(() => {
+    if (!window.matchMedia) return;
+    const compactNavigation = window.matchMedia("(max-width: 1280px)");
+    const closeAtDesktopWidth = (event: MediaQueryListEvent) => {
+      if (event.matches) return;
+
+      const focusWasInMenu = panel.current?.contains(document.activeElement) ?? false;
+      setOpen(false);
+      if (focusWasInMenu) {
+        const brand = document.querySelector<HTMLElement>(".site-header .brand");
+        brand?.removeAttribute("inert");
+        brand?.focus();
+      }
+    };
+    compactNavigation.addEventListener("change", closeAtDesktopWidth);
+    return () => compactNavigation.removeEventListener("change", closeAtDesktopWidth);
+  }, []);
 
   useEffect(() => {
     document.body.classList.toggle("menu-open", open);
@@ -94,8 +117,12 @@ export function MobileNavigation() {
                 ref={index === 0 ? firstLink : undefined}
                 onClick={() => setOpen(false)}
                 tabIndex={open ? 0 : -1}
+                aria-current={!("children" in item) && pathname === item.href ? "page" : undefined}
+                data-active={("children" in item && projectsSectionActive) || (!("children" in item) && pathname.startsWith(`${item.href}/`)) ? "true" : undefined}
               >
-                {item.label}<ArrowUpRight size={18} aria-hidden="true" />
+                <span className="mobile-links__number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                <span className="mobile-links__label">{item.label}</span>
+                <ArrowUpRight size={18} aria-hidden="true" />
               </Link>
             );
 
@@ -111,6 +138,7 @@ export function MobileNavigation() {
                       href={child.href}
                       onClick={() => setOpen(false)}
                       tabIndex={open ? 0 : -1}
+                      aria-current={pathname === child.href ? "page" : undefined}
                     >
                       {child.label}<ArrowUpRight size={16} aria-hidden="true" />
                     </Link>
@@ -128,10 +156,12 @@ export function MobileNavigation() {
               onClick={() => setOpen(false)}
               tabIndex={open ? 0 : -1}
             >
-              Instagram <ArrowUpRight size={18} aria-hidden="true" />
+              <span className="mobile-links__number" aria-hidden="true">{String(primaryNavigation.length + 1).padStart(2, "0")}</span>
+              <span className="mobile-links__label">Instagram</span>
+              <ArrowUpRight size={18} aria-hidden="true" />
             </a>
           ) : null}
-          <Link className="button button--primary" href="/contact" onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}>Plan a consultation</Link>
+          <Link className="button button--primary" href="/contact" onClick={() => setOpen(false)} tabIndex={open ? 0 : -1} aria-current={pathname === "/contact" ? "page" : undefined}>Plan a consultation</Link>
         </nav>
       </div>
     </>

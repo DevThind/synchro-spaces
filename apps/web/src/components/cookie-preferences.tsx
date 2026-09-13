@@ -16,10 +16,13 @@ export function CookiePreferences() {
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
-      const stored = window.localStorage.getItem(CONSENT_KEY);
-      if (stored) {
-        try { setAnalytics((JSON.parse(stored) as { analytics?: boolean }).analytics === true); } catch { setVisible(true); }
-      } else setVisible(true);
+      try {
+        const stored = window.localStorage.getItem(CONSENT_KEY);
+        if (stored) setAnalytics((JSON.parse(stored) as { analytics?: boolean }).analytics === true);
+        else setVisible(true);
+      } catch {
+        setVisible(true);
+      }
       setReady(true);
     }, 0);
     return () => window.clearTimeout(timer);
@@ -30,7 +33,11 @@ export function CookiePreferences() {
   }, [visible]);
 
   function save(allowAnalytics: boolean) {
-    window.localStorage.setItem(CONSENT_KEY, JSON.stringify({ necessary: true, analytics: allowAnalytics, updatedAt: new Date().toISOString() }));
+    try {
+      window.localStorage.setItem(CONSENT_KEY, JSON.stringify({ necessary: true, analytics: allowAnalytics, updatedAt: new Date().toISOString() }));
+    } catch {
+      // Keep the in-memory choice usable when browser storage is unavailable.
+    }
     setAnalytics(allowAnalytics);
     setVisible(false);
     window.dispatchEvent(new CustomEvent("consent-changed", { detail: { analytics: allowAnalytics } }));
@@ -45,12 +52,12 @@ export function CookiePreferences() {
     {visible ? <aside ref={banner} className="cookie-banner" aria-labelledby="cookie-title" aria-describedby="cookie-description" tabIndex={-1}>
       <h2 id="cookie-title">Your privacy choices</h2>
       <p id="cookie-description">Necessary storage remembers this choice and protects form delivery. Optional analytics stay off unless you allow them.</p>
-      {settings ? <div className="cookie-settings"><label className="privacy-check"><input type="checkbox" checked={analytics} onChange={(event) => setAnalytics(event.target.checked)} /><span><strong>Optional analytics</strong><br /><small>Helps understand page and enquiry journeys without recording form content.</small></span></label></div> : null}
       <div className="cookie-actions">
-        <button className="button button--primary" type="button" onClick={() => save(settings ? analytics : true)}>Allow selected</button>
+        <button className="button button--primary" type="button" onClick={() => save(settings ? analytics : true)}>{settings ? "Save choices" : "Allow analytics"}</button>
         <button className="button button--outline" type="button" onClick={() => save(false)}>Necessary only</button>
-        <button className="cookie-trigger" type="button" onClick={() => setSettings((value) => !value)} aria-expanded={settings}>{settings ? "Hide details" : "Choose"}</button>
+        <button className="cookie-trigger" type="button" onClick={() => setSettings((value) => !value)} aria-expanded={settings} aria-controls="cookie-settings">{settings ? "Hide details" : "Choose"}</button>
       </div>
+      <div id="cookie-settings" className="cookie-settings" hidden={!settings}><label className="privacy-check"><input type="checkbox" checked={analytics} onChange={(event) => setAnalytics(event.target.checked)} /><span><strong>Optional analytics</strong><br /><small>Helps understand page and enquiry journeys without recording form content.</small></span></label></div>
     </aside> : <button ref={manage} className="cookie-manage" type="button" onClick={() => { openedFromManage.current = true; setSettings(true); setVisible(true); }}>Privacy choices</button>}
   </>;
 }

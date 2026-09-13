@@ -1,7 +1,9 @@
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { MobileNavigation } from "./mobile-navigation";
+
+vi.mock("next/navigation", () => ({ usePathname: () => "/projects" }));
 
 describe("MobileNavigation", () => {
   it("opens, exposes links, and closes with Escape", async () => {
@@ -16,6 +18,7 @@ describe("MobileNavigation", () => {
     expect(links[0]).toHaveFocus();
     const projectSections = within(navigation).getByRole("group", { name: "Project sections" });
     expect(within(projectSections).getByRole("link", { name: "Projects" })).toBeVisible();
+    expect(within(projectSections).getByRole("link", { name: "All projects" })).toHaveAttribute("aria-current", "page");
     expect(within(projectSections).getByRole("link", { name: "Residential" })).toHaveAttribute("href", "/residential");
     expect(within(projectSections).getByRole("link", { name: "Commercial" })).toHaveAttribute("href", "/commercial");
     const processLink = within(navigation).getByRole("link", { name: "Process" });

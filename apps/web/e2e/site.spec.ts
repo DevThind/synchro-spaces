@@ -23,10 +23,12 @@ test("desktop navigation puts Control4 first and nests project paths", async ({ 
   const topLevelLabels = await navigation.locator(":scope > a, :scope > .desktop-nav__group > a").allTextContents();
   expect(topLevelLabels.indexOf("Our services")).toBe(topLevelLabels.indexOf("Process") + 1);
 
-  const trigger = navigation.getByRole("button", { name: "Show project sections" });
+  const trigger = navigation.locator(".desktop-nav__group > button");
+  await expect(trigger).toHaveAccessibleName("Show project sections");
   await expect(trigger).toHaveAttribute("data-hydrated", "true");
   await trigger.click();
   await expect(trigger).toHaveAttribute("aria-expanded", "true");
+  await expect(trigger).toHaveAccessibleName("Hide project sections");
   await expect(navigation.getByRole("link", { name: "Residential" })).toBeVisible();
   await expect(navigation.getByRole("link", { name: "Commercial" })).toBeVisible();
   await page.keyboard.press("Escape");
@@ -101,7 +103,10 @@ for (const path of ["/", "/control4", "/residential", "/commercial", "/projects"
       () => document.documentElement.scrollWidth > document.documentElement.clientWidth
     );
     expect(overflows).toBe(false);
-    const results = await new AxeBuilder({ page }).exclude("[data-turnstile]").analyze();
-    expect(results.violations.filter((item) => ["serious", "critical"].includes(item.impact ?? ""))).toEqual([]);
+    const results = await new AxeBuilder({ page })
+      .exclude("[data-turnstile]")
+      .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])
+      .analyze();
+    expect(results.violations).toEqual([]);
   });
 }

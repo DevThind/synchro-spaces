@@ -4,6 +4,9 @@ import { hasVerifiedEmail, hasVerifiedPhone, siteConfig } from "@/config/site";
 export function ContactInformation() {
   const instagram = siteConfig.socialProfiles.instagram;
   const hasAddress = Boolean(siteConfig.address.trim());
+  const hasDirectContact = hasAddress || hasVerifiedPhone || hasVerifiedEmail || siteConfig.businessHours.length > 0;
+
+  if (!hasDirectContact) return null;
 
   return <aside className="aside-card"><h2>Connect with {siteConfig.companyName}</h2><ul className="aside-list">
     {hasAddress ? <li><MapPin size={17} aria-hidden="true" /> <strong>Office</strong><br />{siteConfig.address}</li> : null}

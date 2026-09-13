@@ -28,20 +28,20 @@ export function Footer() {
           </p> : null}
           {instagram ? <p><a className="text-link" href={instagram} target="_blank" rel="noreferrer" aria-label="Follow Synchro Spaces on Instagram (opens in a new tab)">Instagram <span aria-hidden="true">↗</span></a></p> : null}
         </div>
-        <div>
+        <div className="footer-group footer-group--projects">
           <h2 className="footer-title">Projects</h2>
           <nav className="footer-links" aria-label="Project links">
             {projectLinks.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
           </nav>
         </div>
-        <div>
+        <div className="footer-group footer-group--explore">
           <h2 className="footer-title">Explore</h2>
           <nav className="footer-links" aria-label="Explore links">
             <Link href="/control4">Control4</Link><Link href="/process">Process</Link><Link href="/services">Our services</Link><Link href="/about">About</Link>
             <Link href="/technology-partners">Technology approach</Link><Link href="/service-areas">Project locations</Link><Link href="/contact">Contact</Link>
           </nav>
         </div>
-        <div>
+        <div className="footer-group footer-group--information">
           <h2 className="footer-title">Information</h2>
           <nav className="footer-links" aria-label="Policy links">
             <Link href="/resources">Resources</Link><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><Link href="/accessibility">Accessibility</Link>

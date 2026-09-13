@@ -173,6 +173,7 @@ test("small-phone navigation remains usable", async ({ page }, testInfo) => {
   const trigger = page.locator(".menu-button");
   await expect(trigger).toBeVisible();
   await expect(trigger).toHaveAccessibleName("Open navigation");
+  await expect(page.locator(".site-header")).toHaveCSS("position", "sticky");
   const box = await trigger.boundingBox();
   expect(box?.width).toBeGreaterThanOrEqual(44);
   expect(box?.height).toBeGreaterThanOrEqual(44);
@@ -198,6 +199,64 @@ test("small-phone navigation remains usable", async ({ page }, testInfo) => {
   await expect(trigger).toBeFocused();
   await page.keyboard.press("Shift+Tab");
   await expect(lastLink).toBeFocused();
+
+  await page.setViewportSize({ width: 1281, height: 700 });
+  await expect(navigation).toBeHidden();
+  await expect(page.locator("body")).not.toHaveClass(/menu-open/);
+  await expect(page.locator(".site-header .brand")).not.toHaveAttribute("inert", "");
+  await expect(page.locator(".site-header .brand")).toBeFocused();
+});
+
+test("sticky header does not cover service jump targets", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop-chromium", "Run the phone anchor check once");
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.addInitScript(() => {
+    window.localStorage.setItem(
+      "site-consent-v1",
+      JSON.stringify({ necessary: true, analytics: false })
+    );
+  });
+  await page.goto("/services", { waitUntil: "domcontentloaded" });
+  await page.locator(".services-index").getByRole("link", { name: /Integrated security/ }).click();
+  await expect(page).toHaveURL(/#integrated-security$/);
+
+  const positions = await page.evaluate(() => ({
+    headerBottom: document.querySelector<HTMLElement>(".site-header")!.getBoundingClientRect().bottom,
+    targetTop: document.querySelector<HTMLElement>("#integrated-security")!.getBoundingClientRect().top
+  }));
+  expect(positions.targetTop).toBeGreaterThan(positions.headerBottom);
+});
+
+test("phone form controls remain comfortable to tap", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop-chromium", "Run the phone form check once");
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.addInitScript(() => {
+    window.localStorage.setItem(
+      "site-consent-v1",
+      JSON.stringify({ necessary: true, analytics: false })
+    );
+  });
+  await page.goto("/contact", { waitUntil: "domcontentloaded" });
+
+  const form = page.locator(".lead-form");
+  const submit = form.getByRole("button", { name: "Send consultation request" });
+  await expect(form).toBeVisible();
+  await expect(submit).toBeVisible();
+
+  const metrics = await page.evaluate(() => {
+    const form = document.querySelector<HTMLElement>(".lead-form")!.getBoundingClientRect();
+    const submit = document.querySelector<HTMLButtonElement>('.lead-form button[type="submit"]')!.getBoundingClientRect();
+    const controls = [...document.querySelectorAll<HTMLElement>('.lead-form input:not([type="checkbox"]):not([tabindex="-1"]), .lead-form select, .lead-form textarea')];
+    return {
+      formWidth: form.width,
+      submitWidth: submit.width,
+      shortestControl: Math.min(...controls.map((control) => control.getBoundingClientRect().height))
+    };
+  });
+
+  expect(metrics.submitWidth).toBeCloseTo(metrics.formWidth, 0);
+  expect(metrics.shortestControl).toBeGreaterThanOrEqual(44);
 });
 
 test("privacy controls remain reachable on a short phone", async ({ page }, testInfo) => {
@@ -211,9 +270,17 @@ test("privacy controls remain reachable on a short phone", async ({ page }, test
   const choose = banner.getByRole("button", { name: "Choose" });
   const chooseBox = await choose.boundingBox();
   expect(chooseBox?.height).toBeGreaterThanOrEqual(44);
+  await expect(choose).toHaveAttribute("aria-controls", "cookie-settings");
+  await expect(banner.getByRole("button", { name: "Allow analytics" })).toBeVisible();
   await choose.click();
 
   await expect(banner.getByRole("button", { name: "Necessary only" })).toBeVisible();
+  await page.keyboard.press("Tab");
+  await expect(banner.getByRole("checkbox", { name: /Optional analytics/ })).toBeFocused();
+  const actionLefts = await banner.locator(".cookie-actions > *").evaluateAll((actions) =>
+    actions.map((action) => action.getBoundingClientRect().left)
+  );
+  expect(Math.max(...actionLefts) - Math.min(...actionLefts)).toBeLessThanOrEqual(1);
   await banner.getByRole("button", { name: "Necessary only" }).click();
 
   const manage = page.getByRole("button", { name: "Privacy choices" });

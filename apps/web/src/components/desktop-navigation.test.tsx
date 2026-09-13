@@ -1,7 +1,9 @@
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { DesktopNavigation } from "./desktop-navigation";
+
+vi.mock("next/navigation", () => ({ usePathname: () => "/services" }));
 
 describe("DesktopNavigation", () => {
   it("keeps Control4 first and groups Residential and Commercial under Projects", async () => {
@@ -15,11 +17,14 @@ describe("DesktopNavigation", () => {
     expect([...topLevelLinks].some((link) => link.textContent === "Commercial")).toBe(false);
     const labels = [...navigation.querySelectorAll(":scope > a, :scope > .desktop-nav__group > a")].map((link) => link.textContent);
     expect(labels.indexOf("Our services")).toBe(labels.indexOf("Process") + 1);
-    expect(within(navigation).getByRole("link", { name: "Our services" })).toHaveAttribute("href", "/services");
+    const servicesLink = within(navigation).getByRole("link", { name: "Our services" });
+    expect(servicesLink).toHaveAttribute("href", "/services");
+    expect(servicesLink).toHaveAttribute("aria-current", "page");
 
     const trigger = within(navigation).getByRole("button", { name: "Show project sections" });
     await user.click(trigger);
     expect(trigger).toHaveAttribute("aria-expanded", "true");
+    expect(trigger).toHaveAccessibleName("Hide project sections");
     expect(within(navigation).getByRole("link", { name: "Residential" })).toHaveAttribute("href", "/residential");
     expect(within(navigation).getByRole("link", { name: "Commercial" })).toHaveAttribute("href", "/commercial");
 
