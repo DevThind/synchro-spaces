@@ -68,16 +68,10 @@ export default function HomePage() {
         <div className="hero-media">
           <ResponsiveImage image={control4KeypadWall} fill priority sizes="100vw" />
         </div>
-        <nav className="home-page-index" aria-label="Site pages">
-          <span className="home-page-index__title">Pages</span>
-          <div className="home-page-index__links">
-            {homePageLinks.map((item, index) => (
-              <Link href={item.href} key={item.href}>
-                <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-                {item.label}
-              </Link>
-            ))}
-          </div>
+        <nav className="home-page-links" aria-label="Site pages">
+          {homePageLinks.map((item) => (
+            <Link href={item.href} key={item.href}>{item.label}</Link>
+          ))}
         </nav>
         <div className="container hero-content">
           <div className="hero-copy stack">

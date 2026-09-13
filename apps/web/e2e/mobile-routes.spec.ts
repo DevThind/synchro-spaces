@@ -98,14 +98,14 @@ test("desktop sections share one alignment rail", async ({ page }, testInfo) => 
         introHeading: rect("#intro-heading").left,
         viewport: document.documentElement.clientWidth,
         content: document.documentElement.scrollWidth,
-        pageIndexRight: rect(".home-page-index").right,
-        pageIndexTop: rect(".home-page-index").top
+        pageLinksRight: rect(".home-page-links").right,
+        pageLinksTop: rect(".home-page-links").top
       };
     });
 
     expect(metrics.content, `Homepage overflows at ${width}px`).toBeLessThanOrEqual(metrics.viewport + 1);
-    expect(metrics.pageIndexRight).toBeLessThanOrEqual(metrics.viewport);
-    expect(metrics.pageIndexTop).toBeGreaterThanOrEqual(0);
+    expect(metrics.pageLinksRight).toBeLessThanOrEqual(metrics.viewport);
+    expect(metrics.pageLinksTop).toBeGreaterThanOrEqual(0);
     expect(
       Math.max(...metrics.contentLefts) - Math.min(...metrics.contentLefts),
       `Content rails at ${width}px: ${metrics.contentLefts.join(", ")}`
@@ -151,7 +151,7 @@ test("planning questions stack cleanly at intermediate widths", async ({ page },
   }
 });
 
-test("small-phone page index remains usable", async ({ page }, testInfo) => {
+test("small-phone page links remain usable", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "desktop-chromium", "Run the small-phone check once");
   await page.setViewportSize({ width: 320, height: 700 });
   await page.addInitScript(() => {
@@ -162,15 +162,16 @@ test("small-phone page index remains usable", async ({ page }, testInfo) => {
   });
   await page.goto("/", { waitUntil: "domcontentloaded" });
 
-  const pageIndex = page.getByRole("navigation", { name: "Site pages" });
-  await expect(pageIndex).toBeVisible();
-  await expect(pageIndex.getByRole("link")).toHaveCount(9);
+  const pageLinks = page.getByRole("navigation", { name: "Site pages" });
+  await expect(pageLinks).toBeVisible();
+  await expect(pageLinks.getByRole("link")).toHaveCount(9);
   await expect(page.locator(".site-header")).toHaveCount(0);
 
   const metrics = await page.evaluate(() => {
-    const index = document.querySelector<HTMLElement>(".home-page-index")!.getBoundingClientRect();
+    const navigation = document.querySelector<HTMLElement>(".home-page-links")!;
+    const index = navigation.getBoundingClientRect();
     const copy = document.querySelector<HTMLElement>(".hero-copy")!.getBoundingClientRect();
-    const links = [...document.querySelectorAll<HTMLElement>(".home-page-index a")];
+    const links = [...navigation.querySelectorAll<HTMLElement>("a")];
     return {
       indexTop: index.top,
       indexRight: index.right,
