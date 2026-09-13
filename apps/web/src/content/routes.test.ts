@@ -4,8 +4,7 @@ import { routeForDocument } from "./routes";
 describe("document route mapping", () => {
   it.each([
     ["service", "lighting", "/residential/lighting"],
-    ["project", "lake-house", "/projects/lake-house"],
-    ["serviceArea", "toronto", "/service-areas/toronto"]
+    ["project", "lake-house", "/projects/lake-house"]
   ])("maps %s documents", (type, slug, expected) => {
     expect(routeForDocument(type, slug)).toBe(expected);
   });

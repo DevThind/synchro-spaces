@@ -6,11 +6,18 @@ test("home page index and responsive shell work", async ({ page }) => {
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Intelligence you can feel. Not see.");
   const pageIndex = page.getByRole("navigation", { name: "Site pages" });
   await expect(pageIndex).toBeVisible();
-  await expect(pageIndex.getByRole("link")).toHaveCount(9);
-  await pageIndex.getByRole("link", { name: "Projects", exact: true }).click();
+  await expect(page.locator(".site-brand")).toBeVisible();
+  await expect(pageIndex.getByRole("link")).toHaveCount(4);
+  await pageIndex.locator("summary").click();
+  await expect(pageIndex.getByRole("link")).toHaveCount(7);
+  await expect(pageIndex.getByRole("link", { name: "Residential" })).toBeVisible();
+  await expect(pageIndex.getByRole("link", { name: "Commercial" })).toBeVisible();
+  await pageIndex.getByRole("link", { name: "All projects" }).click();
   await expect(page).toHaveURL(/\/projects$/);
   await expect(page.getByRole("heading", { level: 1, name: /Look closer/ })).toBeVisible();
-  await expect(page.getByRole("navigation", { name: "Site pages" })).toHaveCount(0);
+  await expect(page.getByRole("navigation", { name: "Site pages" })).toBeVisible();
+  await page.locator(".site-brand").click();
+  await expect(page).toHaveURL(/\/$/);
   await expect.poll(() => page.evaluate(
     () => document.documentElement.scrollWidth > document.documentElement.clientWidth
   )).toBe(false);

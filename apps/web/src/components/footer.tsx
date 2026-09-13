@@ -38,7 +38,7 @@ export function Footer() {
           <h2 className="footer-title">Explore</h2>
           <nav className="footer-links" aria-label="Explore links">
             <Link href="/control4">Control4</Link><Link href="/process">Process</Link><Link href="/services">Our services</Link>
-            <Link href="/technology-partners">Technology approach</Link><Link href="/service-areas">Project locations</Link><Link href="/contact">Contact</Link>
+            <Link href="/contact">Contact</Link>
           </nav>
         </div>
         <div className="footer-group footer-group--information">

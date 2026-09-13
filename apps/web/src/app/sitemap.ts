@@ -1,17 +1,14 @@
 import type { MetadataRoute } from "next";
-import { getProjects, getServiceAreas, getServices } from "@/content";
+import { getProjects, getServices } from "@/content";
 import { siteConfig } from "@/config/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [services, projects, areas] = await Promise.all([getServices(), getProjects(), getServiceAreas()]);
-  const publishedAreas = areas.filter((area) => area.published && !area.title.includes("["));
-  const staticPaths = ["/", "/residential", "/commercial", "/projects", "/control4", "/technology-partners", "/process", "/services", "/contact", "/privacy", "/terms", "/accessibility"];
+  const [services, projects] = await Promise.all([getServices(), getProjects()]);
+  const staticPaths = ["/", "/residential", "/commercial", "/projects", "/control4", "/process", "/services", "/contact", "/privacy", "/terms", "/accessibility"];
   const paths = [
     ...staticPaths,
-    ...(publishedAreas.length ? ["/service-areas"] : []),
     ...services.filter((item) => item.published).map((item) => `/residential/${item.slug}`),
-    ...projects.filter((item) => item.published).map((item) => `/projects/${item.slug}`),
-    ...publishedAreas.map((item) => `/service-areas/${item.slug}`)
+    ...projects.filter((item) => item.published).map((item) => `/projects/${item.slug}`)
   ];
 
   return [...new Set(paths)].map((path) => ({

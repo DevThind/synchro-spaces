@@ -15,10 +15,8 @@ const publicRoutes = [
   "/projects/scenes-at-a-touch",
   "/projects/hidden-backbone",
   "/control4",
-  "/technology-partners",
   "/process",
   "/services",
-  "/service-areas",
   "/contact",
   "/privacy",
   "/terms",
@@ -98,8 +96,8 @@ test("desktop sections share one alignment rail", async ({ page }, testInfo) => 
         introHeading: rect("#intro-heading").left,
         viewport: document.documentElement.clientWidth,
         content: document.documentElement.scrollWidth,
-        pageLinksRight: rect(".home-page-links").right,
-        pageLinksTop: rect(".home-page-links").top
+        pageLinksRight: rect(".site-page-links").right,
+        pageLinksTop: rect(".site-page-links").top
       };
     });
 
@@ -164,14 +162,16 @@ test("small-phone page links remain usable", async ({ page }, testInfo) => {
 
   const pageLinks = page.getByRole("navigation", { name: "Site pages" });
   await expect(pageLinks).toBeVisible();
-  await expect(pageLinks.getByRole("link")).toHaveCount(9);
-  await expect(page.locator(".site-header")).toHaveCount(0);
+  await expect(page.locator(".hero-copy")).toBeVisible();
+  await expect(pageLinks.getByRole("link")).toHaveCount(4);
+  await expect(page.locator(".site-brand")).toBeVisible();
+  await expect(page.locator(".site-topbar")).toBeVisible();
 
   const metrics = await page.evaluate(() => {
-    const navigation = document.querySelector<HTMLElement>(".home-page-links")!;
-    const index = navigation.getBoundingClientRect();
+    const navigation = document.querySelector<HTMLElement>(".site-page-links")!;
+    const index = document.querySelector<HTMLElement>(".site-topbar__inner")!.getBoundingClientRect();
     const copy = document.querySelector<HTMLElement>(".hero-copy")!.getBoundingClientRect();
-    const links = [...navigation.querySelectorAll<HTMLElement>("a")];
+    const links = [...navigation.querySelectorAll<HTMLElement>(":scope > a, :scope > details > summary")];
     return {
       indexTop: index.top,
       indexRight: index.right,
@@ -186,9 +186,14 @@ test("small-phone page links remain usable", async ({ page }, testInfo) => {
   expect(metrics.indexRight).toBeLessThanOrEqual(metrics.viewport + 1);
   expect(metrics.indexBottom).toBeLessThan(metrics.copyTop);
   expect(metrics.shortestLink).toBeGreaterThanOrEqual(44);
+
+  await pageLinks.locator("summary").click();
+  await expect(pageLinks.getByRole("link")).toHaveCount(7);
+  await expect(pageLinks.getByRole("link", { name: "Residential" })).toBeVisible();
+  await expect(pageLinks.getByRole("link", { name: "Commercial" })).toBeVisible();
 });
 
-test("service jump targets remain visible without a header", async ({ page }, testInfo) => {
+test("service jump targets remain visible", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "desktop-chromium", "Run the phone anchor check once");
   await page.setViewportSize({ width: 320, height: 700 });
   await page.emulateMedia({ reducedMotion: "reduce" });

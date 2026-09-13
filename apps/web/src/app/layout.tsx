@@ -4,6 +4,7 @@ import { VisualEditing } from "next-sanity/visual-editing";
 import { Analytics } from "@/components/analytics";
 import { Footer } from "@/components/footer";
 import { JsonLd } from "@/components/json-ld";
+import { SiteHeader } from "@/components/site-header";
 import { siteConfig } from "@/config/site";
 import { organizationJsonLd } from "@/lib/json-ld";
 import "./globals.css";
@@ -27,6 +28,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
     <html lang="en-IN" data-scroll-behavior="smooth">
       <body>
         <a className="skip-link" href="#main-content">Skip to content</a>
+        <SiteHeader />
         <main id="main-content">{children}</main>
         <Footer />
         <Analytics />

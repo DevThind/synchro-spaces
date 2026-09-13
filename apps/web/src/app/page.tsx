@@ -49,18 +49,6 @@ const projectDestinations = [
   }
 ] as const;
 
-const homePageLinks = [
-  { label: "Control4", href: "/control4" },
-  { label: "Projects", href: "/projects" },
-  { label: "Residential", href: "/residential" },
-  { label: "Commercial", href: "/commercial" },
-  { label: "Process", href: "/process" },
-  { label: "Services", href: "/services" },
-  { label: "Technology", href: "/technology-partners" },
-  { label: "Locations", href: "/service-areas" },
-  { label: "Contact", href: "/contact" }
-] as const;
-
 export default function HomePage() {
   return (
     <>
@@ -68,11 +56,6 @@ export default function HomePage() {
         <div className="hero-media">
           <ResponsiveImage image={control4KeypadWall} fill priority sizes="100vw" />
         </div>
-        <nav className="home-page-links" aria-label="Site pages">
-          {homePageLinks.map((item) => (
-            <Link href={item.href} key={item.href}>{item.label}</Link>
-          ))}
-        </nav>
         <div className="container hero-content">
           <div className="hero-copy stack">
             <span className="eyebrow">Synchro Spaces · Smart living, composed</span>
