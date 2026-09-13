@@ -150,7 +150,7 @@ a, button, input, textarea, select, summary { touch-action: manipulation; }
 .site-topbar__inner { min-height: 5.25rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
 .site-brand { flex: 0 0 auto; text-shadow: 0 1px 10px rgba(0,0,0,.9); }
 .site-page-links { display: flex; align-items: flex-start; justify-content: flex-end; gap: 0 1.35rem; color: var(--paper-50); }
-.site-page-links > a, .site-project-menu > summary { min-height: 2.75rem; flex: 0 0 auto; display: inline-flex; align-items: center; border-bottom: 1px solid transparent; color: var(--paper-50); font-size: .68rem; font-weight: 800; letter-spacing: .09em; text-decoration: none; text-shadow: 0 1px 10px rgba(0,0,0,.9); text-transform: uppercase; transition: border-color 180ms ease, color 180ms ease; }
+.site-page-links > a, .site-project-menu > summary { min-height: 2.75rem; flex: 0 0 auto; display: inline-flex; align-items: center; border-bottom: 1px solid transparent; color: var(--paper-50); font-size: .75rem; font-weight: 800; letter-spacing: .09em; text-decoration: none; text-shadow: 0 1px 10px rgba(0,0,0,.9); text-transform: uppercase; transition: border-color 180ms ease, color 180ms ease; }
 .site-page-links > a:hover, .site-page-links > a:focus-visible, .site-page-links > a[aria-current="page"], .site-project-menu > summary:hover, .site-project-menu > summary:focus-visible, .site-project-menu[open] > summary, .site-project-menu[data-active="true"] > summary { border-color: var(--teal-300); color: var(--teal-300); }
 .site-project-menu { position: relative; flex: 0 0 auto; }
 .site-project-menu > summary { gap: .4rem; cursor: pointer; list-style: none; }
@@ -158,7 +158,7 @@ a, button, input, textarea, select, summary { touch-action: manipulation; }
 .site-project-menu > summary span { color: var(--teal-300); font-size: .9rem; transition: transform 180ms ease; }
 .site-project-menu[open] > summary span { transform: rotate(45deg); }
 .site-project-menu__links { position: absolute; top: calc(100% + .35rem); right: 0; width: 11.5rem; display: grid; padding: .35rem; border: 1px solid var(--border-on-dark); background: rgba(14,14,13,.98); box-shadow: var(--shadow-lg); }
-.site-project-menu__links a { min-height: 2.75rem; display: flex; align-items: center; padding-inline: .65rem; border-bottom: 1px solid var(--border-on-dark); color: var(--paper-50); font-size: .7rem; font-weight: 800; letter-spacing: .08em; text-decoration: none; text-transform: uppercase; }
+.site-project-menu__links a { min-height: 2.75rem; display: flex; align-items: center; padding-inline: .65rem; border-bottom: 1px solid var(--border-on-dark); color: var(--paper-50); font-size: .75rem; font-weight: 800; letter-spacing: .08em; text-decoration: none; text-transform: uppercase; }
 .site-project-menu__links a:last-child { border-bottom: 0; }
 .site-project-menu__links a:hover, .site-project-menu__links a:focus-visible, .site-project-menu__links a[aria-current="page"], .site-project-menu__links a[data-active="true"] { background: rgba(255,255,255,.08); color: var(--teal-300); }
 
@@ -604,7 +604,7 @@ a, button, input, textarea, select, summary { touch-action: manipulation; }
   .brand-mark { width: 2rem; height: 2rem; }
   .site-brand { gap: .65rem; }
   .site-brand .brand-mark { width: 2rem; height: 2rem; }
-  .site-page-links > a, .site-project-menu > summary { font-size: .64rem; letter-spacing: .07em; }
+  .site-page-links > a, .site-project-menu > summary { font-size: .68rem; letter-spacing: .07em; }
   .hero { min-height: max(34rem, 100svh); }
   .hero-content { padding-block: clamp(3.25rem, 12vw, 4.25rem); }
   .hero-copy { --stack-space: 1.25rem; }
