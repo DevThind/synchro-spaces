@@ -3,7 +3,6 @@ import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity/visual-editing";
 import { Analytics } from "@/components/analytics";
 import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
 import { JsonLd } from "@/components/json-ld";
 import { siteConfig } from "@/config/site";
 import { organizationJsonLd } from "@/lib/json-ld";
@@ -28,7 +27,6 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
     <html lang="en-IN" data-scroll-behavior="smooth">
       <body>
         <a className="skip-link" href="#main-content">Skip to content</a>
-        <Header />
         <main id="main-content">{children}</main>
         <Footer />
         <Analytics />

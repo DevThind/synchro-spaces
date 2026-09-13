@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { PortableText, type PortableTextBlock } from "@portabletext/react";
-import type { Article, ContentImage, Faq, Partner, Project, Service, Testimonial } from "@/content";
+import type { ContentImage, Faq, Partner, Project, Service, Testimonial } from "@/content";
 
 export function SectionHeading({ eyebrow, title, intro }: { eyebrow: string; title: string; intro?: string }) {
   return (
@@ -65,15 +65,6 @@ export function ProjectCard({ project, priority = false }: { project: Project; p
         <div className="project-image"><ResponsiveImage image={project.image} fill priority={priority} sizes="(max-width: 780px) 100vw, 50vw" /></div>
         <div className="project-card-copy"><div><p className="project-meta">{project.propertyType} · {project.location}</p><h3>{project.title}</h3></div><ArrowRight aria-hidden="true" /></div>
       </Link>
-    </article>
-  );
-}
-
-export function ResourceCard({ article }: { article: Article }) {
-  return (
-    <article className="resource-card"><div className="resource-image"><ResponsiveImage image={article.image} fill sizes="(max-width: 560px) 100vw, 33vw" /></div>
-      <div className="resource-card-copy"><span className="eyebrow">{article.category}</span><h3>{article.title}</h3><p>{article.summary}</p>
-        <Link className="text-link" href={`/resources/${article.slug}`}>Read guide <ArrowRight size={16} aria-hidden="true" /></Link></div>
     </article>
   );
 }

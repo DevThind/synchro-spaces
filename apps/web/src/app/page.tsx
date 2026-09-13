@@ -49,13 +49,16 @@ const projectDestinations = [
   }
 ] as const;
 
-const exploreLinks = [
+const homePageLinks = [
   { label: "Control4", href: "/control4" },
-  { label: "Our process", href: "/process" },
-  { label: "Our services", href: "/services" },
-  { label: "Technology approach", href: "/technology-partners" },
-  { label: "About us", href: "/about" },
-  { label: "Planning guides", href: "/resources" }
+  { label: "Projects", href: "/projects" },
+  { label: "Residential", href: "/residential" },
+  { label: "Commercial", href: "/commercial" },
+  { label: "Process", href: "/process" },
+  { label: "Services", href: "/services" },
+  { label: "Technology", href: "/technology-partners" },
+  { label: "Locations", href: "/service-areas" },
+  { label: "Contact", href: "/contact" }
 ] as const;
 
 export default function HomePage() {
@@ -65,6 +68,17 @@ export default function HomePage() {
         <div className="hero-media">
           <ResponsiveImage image={control4KeypadWall} fill priority sizes="100vw" />
         </div>
+        <nav className="home-page-index" aria-label="Site pages">
+          <span className="home-page-index__title">Pages</span>
+          <div className="home-page-index__links">
+            {homePageLinks.map((item, index) => (
+              <Link href={item.href} key={item.href}>
+                <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </nav>
         <div className="container hero-content">
           <div className="hero-copy stack">
             <span className="eyebrow">Synchro Spaces · Smart living, composed</span>
@@ -184,29 +198,6 @@ export default function HomePage() {
               </article>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="section section--dark" aria-labelledby="explore-heading">
-        <div className="container">
-          <div id="explore-heading">
-            <SectionHeading
-              eyebrow="Explore further"
-              title="The detail, on dedicated pages."
-              intro="Learn how a project moves forward, how technology is approached and what to consider before design begins."
-            />
-          </div>
-          <nav className="page-directory" aria-label="More Synchro Spaces pages">
-            {exploreLinks.map((item, index) => (
-              <Link href={item.href} key={item.href}>
-                <span className="page-directory__number" aria-hidden="true">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <span>{item.label}</span>
-                <ArrowRight size={18} aria-hidden="true" />
-              </Link>
-            ))}
-          </nav>
         </div>
       </section>
 

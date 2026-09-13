@@ -1,51 +1,19 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
-test("principal navigation and responsive shell work", async ({ page }) => {
+test("home page index and responsive shell work", async ({ page }) => {
   await page.goto("/", { waitUntil: "domcontentloaded" });
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Intelligence you can feel. Not see.");
-  await page.getByRole("link", { name: "Projects", exact: true }).first().click();
+  const pageIndex = page.getByRole("navigation", { name: "Site pages" });
+  await expect(pageIndex).toBeVisible();
+  await expect(pageIndex.getByRole("link")).toHaveCount(9);
+  await pageIndex.getByRole("link", { name: "Projects", exact: true }).click();
   await expect(page).toHaveURL(/\/projects$/);
   await expect(page.getByRole("heading", { level: 1, name: /Look closer/ })).toBeVisible();
+  await expect(page.getByRole("navigation", { name: "Site pages" })).toHaveCount(0);
   await expect.poll(() => page.evaluate(
     () => document.documentElement.scrollWidth > document.documentElement.clientWidth
   )).toBe(false);
-});
-
-test("desktop navigation puts Control4 first and nests project paths", async ({ page }) => {
-  test.skip((page.viewportSize()?.width ?? 0) <= 1280, "Desktop navigation test");
-  await page.goto("/", { waitUntil: "domcontentloaded" });
-
-  const navigation = page.getByRole("navigation", { name: "Primary navigation" });
-  await expect(navigation.locator(":scope > a").first()).toHaveText("Control4");
-  await expect(navigation.locator(":scope > a", { hasText: "Residential" })).toHaveCount(0);
-  await expect(navigation.locator(":scope > a", { hasText: "Commercial" })).toHaveCount(0);
-  const topLevelLabels = await navigation.locator(":scope > a, :scope > .desktop-nav__group > a").allTextContents();
-  expect(topLevelLabels.indexOf("Our services")).toBe(topLevelLabels.indexOf("Process") + 1);
-
-  const trigger = navigation.locator(".desktop-nav__group > button");
-  await expect(trigger).toHaveAccessibleName("Show project sections");
-  await expect(trigger).toHaveAttribute("data-hydrated", "true");
-  await trigger.click();
-  await expect(trigger).toHaveAttribute("aria-expanded", "true");
-  await expect(trigger).toHaveAccessibleName("Hide project sections");
-  await expect(navigation.getByRole("link", { name: "Residential" })).toBeVisible();
-  await expect(navigation.getByRole("link", { name: "Commercial" })).toBeVisible();
-  await page.keyboard.press("Escape");
-  await expect(trigger).toHaveAttribute("aria-expanded", "false");
-  await expect(trigger).toBeFocused();
-});
-
-test("mobile menu is keyboard operable", async ({ page }) => {
-  test.skip((page.viewportSize()?.width ?? Number.POSITIVE_INFINITY) > 1280, "Compact navigation test");
-  await page.goto("/", { waitUntil: "domcontentloaded" });
-  const trigger = page.getByRole("button", { name: "Open navigation" });
-  await expect(trigger).toHaveAttribute("data-hydrated", "true");
-  await trigger.click();
-  await expect(page.getByRole("navigation", { name: "Mobile navigation" })).toBeVisible();
-  await page.keyboard.press("Escape");
-  await expect(trigger).toHaveAttribute("aria-expanded", "false");
-  await expect(trigger).toBeFocused();
 });
 
 test("residential solutions use six image-led service cards", async ({ page }) => {

@@ -5,7 +5,6 @@ describe("document route mapping", () => {
   it.each([
     ["service", "lighting", "/residential/lighting"],
     ["project", "lake-house", "/projects/lake-house"],
-    ["article", "planning", "/resources/planning"],
     ["serviceArea", "toronto", "/service-areas/toronto"]
   ])("maps %s documents", (type, slug, expected) => {
     expect(routeForDocument(type, slug)).toBe(expected);
@@ -16,4 +15,3 @@ describe("document route mapping", () => {
     expect(routeForDocument("project")).toBeNull();
   });
 });
-

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { articles, faqs, services } from "@/content/fixtures";
-import { articleJsonLd, breadcrumbJsonLd, faqJsonLd, organizationJsonLd, serializeJsonLd, serviceJsonLd } from "./json-ld";
+import { faqs, services } from "@/content/fixtures";
+import { breadcrumbJsonLd, faqJsonLd, organizationJsonLd, serializeJsonLd, serviceJsonLd } from "./json-ld";
 
 describe("JSON-LD generators", () => {
   it("builds an ordered breadcrumb list with absolute URLs", () => {
@@ -10,7 +10,7 @@ describe("JSON-LD generators", () => {
     expect(JSON.stringify(value)).toContain("https://www.synchro-spaces.com/projects");
   });
 
-  it("maps organization, service, article and eligible FAQ data", () => {
+  it("maps organization, service and eligible FAQ data", () => {
     const organization = organizationJsonLd();
     expect(organization["@type"]).toBe("Organization");
     expect(organization.name).toBe("Synchro Spaces");
@@ -20,7 +20,6 @@ describe("JSON-LD generators", () => {
     expect(organization).not.toHaveProperty("address");
     expect(organization).not.toHaveProperty("areaServed");
     expect(serviceJsonLd(services[0]!)["@type"]).toBe("Service");
-    expect(articleJsonLd(articles[0]!)["@type"]).toBe("Article");
     expect(faqJsonLd(faqs).mainEntity).toHaveLength(faqs.length);
   });
 

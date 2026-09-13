@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { hasVerifiedEmail, hasVerifiedPhone, siteConfig } from "@/config/site";
 import { control4Logo } from "@/content/fixtures";
+import { BrandMark } from "./brand-mark";
 import { CookiePreferences } from "./cookie-preferences";
 import { ResponsiveImage } from "./ui";
-import { BrandMark } from "./header";
 
 const projectLinks = [
   ["Project journal", "/projects"],
@@ -37,14 +37,14 @@ export function Footer() {
         <div className="footer-group footer-group--explore">
           <h2 className="footer-title">Explore</h2>
           <nav className="footer-links" aria-label="Explore links">
-            <Link href="/control4">Control4</Link><Link href="/process">Process</Link><Link href="/services">Our services</Link><Link href="/about">About</Link>
+            <Link href="/control4">Control4</Link><Link href="/process">Process</Link><Link href="/services">Our services</Link>
             <Link href="/technology-partners">Technology approach</Link><Link href="/service-areas">Project locations</Link><Link href="/contact">Contact</Link>
           </nav>
         </div>
         <div className="footer-group footer-group--information">
           <h2 className="footer-title">Information</h2>
           <nav className="footer-links" aria-label="Policy links">
-            <Link href="/resources">Resources</Link><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><Link href="/accessibility">Accessibility</Link>
+            <Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><Link href="/accessibility">Accessibility</Link>
           </nav>
         </div>
       </div>

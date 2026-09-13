@@ -1,5 +1,5 @@
 import { siteConfig } from "@/config/site";
-import type { Article, Faq, Service } from "@/content";
+import type { Faq, Service } from "@/content";
 
 type JsonLd = Record<string, unknown>;
 const absolute = (path: string) => new URL(path, siteConfig.seo.siteUrl).toString();
@@ -38,10 +38,6 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]): JsonL
 export function serviceJsonLd(service: Service): JsonLd {
   const province = siteConfig.province.trim();
   return { "@context": "https://schema.org", "@type": "Service", name: service.title, description: service.summary, url: absolute(`/residential/${service.slug}`), provider: { "@id": `${absolute("/")}#organization` }, ...(province ? { areaServed: { "@type": "AdministrativeArea", name: province } } : {}), audience: { "@type": "Audience", audienceType: service.audience } };
-}
-
-export function articleJsonLd(article: Article): JsonLd {
-  return { "@context": "https://schema.org", "@type": "Article", headline: article.title, description: article.summary, datePublished: article.publishedAt, dateModified: article.updatedAt, mainEntityOfPage: absolute(`/resources/${article.slug}`), image: absolute(article.image.src), author: { "@id": `${absolute("/")}#organization` }, publisher: { "@id": `${absolute("/")}#organization` } };
 }
 
 export function faqJsonLd(items: Faq[]): JsonLd {
