@@ -4,6 +4,8 @@ import { expect, test } from "@playwright/test";
 test("home page index and responsive shell work", async ({ page }) => {
   await page.goto("/", { waitUntil: "domcontentloaded" });
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Intelligence you can feel. Not see.");
+  const menuToggle = page.locator(".site-menu-toggle");
+  if (await menuToggle.isVisible()) await menuToggle.click();
   const pageIndex = page.getByRole("navigation", { name: "Site pages" });
   await expect(pageIndex).toBeVisible();
   await expect(page.locator(".site-brand")).toBeVisible();
@@ -15,6 +17,7 @@ test("home page index and responsive shell work", async ({ page }) => {
   await pageIndex.getByRole("link", { name: "All projects" }).click();
   await expect(page).toHaveURL(/\/projects$/);
   await expect(page.getByRole("heading", { level: 1, name: /Look closer/ })).toBeVisible();
+  if (await menuToggle.isVisible()) await menuToggle.click();
   await expect(page.getByRole("navigation", { name: "Site pages" })).toBeVisible();
   await page.locator(".site-brand").click();
   await expect(page).toHaveURL(/\/$/);

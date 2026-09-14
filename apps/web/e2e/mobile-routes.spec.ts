@@ -163,7 +163,14 @@ test("small-phone page links remain usable", async ({ page }, testInfo) => {
   await page.goto("/", { waitUntil: "domcontentloaded" });
 
   const pageLinks = page.getByRole("navigation", { name: "Site pages" });
+  const menuButton = page.locator(".site-menu-toggle");
+  await expect(menuButton).toBeVisible();
+  await expect(menuButton).toHaveAccessibleName("Menu");
+  await expect(menuButton).toHaveAttribute("aria-expanded", "false");
+  await menuButton.click();
   await expect(pageLinks).toBeVisible();
+  await expect(menuButton).toHaveAccessibleName("Close");
+  await expect(menuButton).toHaveAttribute("aria-expanded", "true");
   await expect(page.locator(".hero-copy")).toBeVisible();
   await expect(pageLinks.getByRole("link")).toHaveCount(4);
   await expect(page.locator(".site-brand")).toBeVisible();
@@ -193,6 +200,10 @@ test("small-phone page links remain usable", async ({ page }, testInfo) => {
   await expect(pageLinks.getByRole("link")).toHaveCount(7);
   await expect(pageLinks.getByRole("link", { name: "Residential" })).toBeVisible();
   await expect(pageLinks.getByRole("link", { name: "Commercial" })).toBeVisible();
+
+  await page.keyboard.press("Escape");
+  await expect(pageLinks).toBeHidden();
+  await expect(menuButton).toBeFocused();
 });
 
 test("service jump targets remain visible", async ({ page }, testInfo) => {
