@@ -23,21 +23,26 @@ test("home page index and responsive shell work", async ({ page }) => {
   )).toBe(false);
 });
 
-test("residential solutions use six image-led service cards", async ({ page }) => {
+test("residential journal uses only the supplied project gallery", async ({ page }) => {
   await page.goto("/residential", { waitUntil: "domcontentloaded" });
 
-  const cards = page.locator(".residential-service-grid > .service-card--image");
-  await expect(cards).toHaveCount(6);
-  await expect(cards.locator("img")).toHaveCount(6);
-  await expect(cards.locator("h3")).toHaveText([
-    "Whole-home automation",
-    "Lighting & curtain control",
-    "Audio, video & entertainment",
-    "Networking & infrastructure",
-    "Integrated security",
-    "Comfort & daily routines"
-  ]);
-  await expect(page.getByRole("heading", { name: "Smart access readiness" })).toHaveCount(0);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Residential projects.");
+  const gallery = page.locator(".portfolio-gallery");
+  await expect(gallery.locator("figure")).toHaveCount(2);
+  await expect(gallery.locator("img")).toHaveCount(2);
+  await expect(page.locator("[data-project]")).toHaveCount(2);
+  await expect(page.locator("[data-project='02'] img")).toHaveCount(9);
+  await expect(page.locator(".residential-service-grid")).toHaveCount(0);
+});
+
+test("services 04 through 06 repeat the first three chapter layouts", async ({ page }) => {
+  await page.goto("/services", { waitUntil: "domcontentloaded" });
+
+  await expect(page.locator(".services-chapter")).toHaveCount(6);
+  await expect(page.locator("#whole-home-control .services-gallery")).toBeVisible();
+  await expect(page.locator("#lighting-and-shading")).toHaveClass(/services-chapter--dark/);
+  await expect(page.locator("#lighting-and-shading .services-gallery")).toBeVisible();
+  await expect(page.locator("#networks-and-infrastructure .services-remote-media")).toBeVisible();
 });
 
 test("development consultation flow confirms server success", async ({ page }) => {

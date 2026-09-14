@@ -4,15 +4,17 @@
 
 - [x] Public business name: Synchro Spaces
 - [x] Verified Instagram profile: `https://www.instagram.com/synchro_spaces/`
+- [x] Published phone: `+91 7210800077`
+- [x] Published email: `synchrospaces@gmail.com`
 - [x] Seventeen user-supplied images integrated into the residential, Control4, and services stories
-- [x] Unknown phone, email, address, hours, and location values left empty and omitted
-- [x] Organization JSON-LD includes the verified identity and Instagram URL without unverified contact or location fields
+- [x] Unknown address, hours, and location values left empty and omitted
+- [x] Organization JSON-LD includes the verified identity, contact details, and Instagram URL without unverified location fields
 
 ## Identity and operations still needed
 
 - [ ] Legal entity name, if different from the public business name
 - [x] Final canonical domain: `https://www.synchro-spaces.com`
-- [ ] Phone, email, address, hours, and exact service boundary, if Synchro Spaces wants any of them published
+- [ ] Address, hours, and exact service boundary, if Synchro Spaces wants any of them published
 - [ ] Approved consultation CTA and response-time wording
 - [ ] Named privacy and accessibility contacts
 - [ ] Final approval of the website mark, wordmark treatment, colours, and brand usage

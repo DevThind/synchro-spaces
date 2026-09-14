@@ -15,8 +15,8 @@ describe("JSON-LD generators", () => {
     expect(organization["@type"]).toBe("Organization");
     expect(organization.name).toBe("Synchro Spaces");
     expect(organization.sameAs).toEqual(["https://www.instagram.com/synchro_spaces/"]);
-    expect(organization).not.toHaveProperty("telephone");
-    expect(organization).not.toHaveProperty("email");
+    expect(organization.telephone).toBe("+91 7210800077");
+    expect(organization.email).toBe("synchrospaces@gmail.com");
     expect(organization).not.toHaveProperty("address");
     expect(organization).not.toHaveProperty("areaServed");
     expect(serviceJsonLd(services[0]!)["@type"]).toBe("Service");

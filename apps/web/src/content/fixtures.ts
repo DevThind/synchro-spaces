@@ -80,10 +80,10 @@ export const control4KeypadCollection = {
 };
 
 export const control4Logo = {
-  src: "/images/synchro-spaces/control4-logo.jpeg",
+  src: "/images/synchro-spaces/control4-logo-full.jpeg",
   alt: "Control4",
   width: 1206,
-  height: 982
+  height: 656
 };
 
 export const videoDoorStation = {
@@ -126,6 +126,83 @@ export const audioTouchscreen = {
   alt: "Wall-mounted touchscreen displaying music controls beside a softly furnished living room",
   width: 1206,
   height: 923
+};
+
+export const residentialLivingRoomProject = {
+  src: "/images/synchro-spaces/residential-living-room-project.jpg",
+  alt: "Completed residential living room with integrated television, ceiling speakers and layered architectural lighting",
+  width: 1086,
+  height: 1452
+};
+
+export const residentialDiningRoomProject = {
+  src: "/images/synchro-spaces/residential-dining-room-project.jpg",
+  alt: "Completed residential dining room with a sculptural pendant, recessed lighting and integrated ceiling speakers",
+  width: 1086,
+  height: 1452
+};
+
+export const residentialProjectTwoKitchen = {
+  src: "/images/synchro-spaces/residential-project-two-kitchen.jpeg",
+  alt: "Warm timber kitchen with a black island, recessed lighting and integrated ceiling speakers",
+  width: 1086,
+  height: 1448
+};
+
+export const residentialProjectTwoDining = {
+  src: "/images/synchro-spaces/residential-project-two-dining.jpeg",
+  alt: "Timber-lined dining room with pendant lighting, recessed lighting and integrated ceiling speakers",
+  width: 1086,
+  height: 1448
+};
+
+export const residentialProjectTwoLightingPanel = {
+  src: "/images/synchro-spaces/residential-project-two-lighting-panel.jpeg",
+  alt: "Control4 lighting modules installed within a recessed central lighting panel",
+  width: 1086,
+  height: 1448
+};
+
+export const residentialProjectTwoSixSceneKeypad = {
+  src: "/images/synchro-spaces/residential-project-two-six-scene-keypad.jpeg",
+  alt: "Six-button scene keypad labelled for steps, kitchen, picture, curtain, dining and living",
+  width: 1122,
+  height: 1402
+};
+
+export const residentialProjectTwoYaleLock = {
+  src: "/images/synchro-spaces/residential-project-two-yale-lock.jpeg",
+  alt: "Yale touchscreen smart lock installed on a timber door",
+  width: 1122,
+  height: 1402
+};
+
+export const residentialProjectTwoThreeSceneKeypad = {
+  src: "/images/synchro-spaces/residential-project-two-three-scene-keypad.jpeg",
+  alt: "Three-button scene keypad labelled Welcome, Curtain and Away",
+  width: 1122,
+  height: 1402
+};
+
+export const residentialProjectTwoEquipmentRack = {
+  src: "/images/synchro-spaces/residential-project-two-equipment-rack.jpeg",
+  alt: "Integrated equipment rack for control, audio, networking and surveillance",
+  width: 1254,
+  height: 1254
+};
+
+export const residentialProjectTwoExteriorNight = {
+  src: "/images/synchro-spaces/residential-project-two-exterior-night.jpeg",
+  alt: "Completed residence with warm architectural lighting against the night sky",
+  width: 1338,
+  height: 1175
+};
+
+export const residentialProjectTwoExteriorTwilight = {
+  src: "/images/synchro-spaces/residential-project-two-exterior-twilight.jpeg",
+  alt: "Completed residence with softly illuminated balconies and landscape at twilight",
+  width: 1122,
+  height: 1402
 };
 
 export const services: Service[] = [

@@ -18,8 +18,8 @@ export const siteConfig: SiteConfig = {
   companyName: "Synchro Spaces",
   shortDescription:
     "Thoughtful smart-home integration for lighting, scenes, entertainment, integrated security and connected infrastructure.",
-  phone: "",
-  email: "",
+  phone: "+91 7210800077",
+  email: "synchrospaces@gmail.com",
   address: "",
   businessHours: [],
   serviceAreas: [],

@@ -4,6 +4,8 @@
 
 - Public business name: **Synchro Spaces**.
 - Verified Instagram profile: [@synchro_spaces](https://www.instagram.com/synchro_spaces/).
+- Published phone: **+91 7210800077**.
+- Published email: **synchrospaces@gmail.com**.
 - Seventeen user-supplied images are integrated into the website:
   - `residence-night.jpeg`
   - `residence-twilight.jpeg`
@@ -15,7 +17,7 @@
   - `control4-touchscreen-evening.jpeg`
   - `control4-touchscreen-hallway.jpeg`
   - `control4-keypad-collection.jpeg`
-  - `control4-logo.jpeg`
+  - `control4-logo-full.jpeg`
   - `video-door-station.jpeg`
   - `exterior-security-camera.jpeg`
   - `handheld-media-controller.jpeg`
@@ -23,14 +25,14 @@
   - `cinema-room.jpeg`
   - `audio-touchscreen.jpeg`
 - Approved canonical origin: **https://www.synchro-spaces.com**.
-- Unknown phone, email, address, hours, and service-location fields are intentionally empty and omitted from public output.
+- Unknown address, hours, and service-location fields are intentionally empty and omitted from public output.
 
 ## Required before launch
 
 - Written confirmation that Synchro Spaces may publish all seventeen supplied images, including any required property-owner, photographer, installer, interface, brand, trademark, or third-party permissions.
 - Written confirmation that the supplied Control4 logo may be used in the footer in accordance with the applicable brand guidelines.
 - Legal entity name where policies, contracts, or invoices require something other than the public business name.
-- Phone, email, office address, hours, and service boundary only if Synchro Spaces wants them published; each must be verified before being added.
+- Office address, hours, and service boundary only if Synchro Spaces wants them published; each must be verified before being added.
 - Jurisdiction-appropriate privacy, cookie, terms, accessibility, retention, and enquiry-consent review, with named contacts where required.
 - CRM field mapping and credentials if live CRM delivery is wanted.
 - Sender, reply-to, team addresses, domain authentication, and provider credentials if live email delivery is wanted.

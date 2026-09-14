@@ -112,8 +112,8 @@ test("desktop sections share one alignment rail", async ({ page }, testInfo) => 
   }
 });
 
-test("planning questions stack cleanly at intermediate widths", async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name !== "desktop-chromium", "Run the FAQ breakpoint check once");
+test("residential project gallery remains composed at intermediate widths", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop-chromium", "Run the gallery breakpoint check once");
 
   await page.addInitScript(() => {
     window.localStorage.setItem(
@@ -122,30 +122,32 @@ test("planning questions stack cleanly at intermediate widths", async ({ page },
     );
   });
 
-  for (const width of [781, 800, 820, 850, 900]) {
+  for (const width of [561, 700, 780, 900]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/residential", { waitUntil: "domcontentloaded" });
-    await expect(page.locator(".faq-layout")).toBeVisible();
+    await expect(page.locator(".portfolio-gallery")).toBeVisible();
 
     const metrics = await page.evaluate(() => {
-      const layout = document.querySelector<HTMLElement>(".faq-layout")!;
-      const intro = document.querySelector<HTMLElement>(".faq-layout__intro")!.getBoundingClientRect();
-      const questions = document.querySelector<HTMLElement>(".faq-list")!.getBoundingClientRect();
+      const layout = document.querySelector<HTMLElement>(".portfolio-gallery")!;
+      const living = document.querySelector<HTMLElement>(".portfolio-gallery__item--living .portfolio-gallery__media")!.getBoundingClientRect();
+      const dining = document.querySelector<HTMLElement>(".portfolio-gallery__item--dining .portfolio-gallery__media")!.getBoundingClientRect();
       return {
         viewport: document.documentElement.clientWidth,
         content: document.documentElement.scrollWidth,
         columns: getComputedStyle(layout).gridTemplateColumns,
-        introLeft: intro.left,
-        questionsLeft: questions.left,
-        introBottom: intro.bottom,
-        questionsTop: questions.top
+        livingLeft: living.left,
+        livingRight: living.right,
+        diningLeft: dining.left,
+        diningTop: dining.top,
+        livingTop: living.top
       };
     });
 
-    expect(metrics.content, `FAQ overflows at ${width}px`).toBeLessThanOrEqual(metrics.viewport + 1);
-    expect(metrics.columns.trim().split(/\s+/)).toHaveLength(1);
-    expect(Math.abs(metrics.introLeft - metrics.questionsLeft)).toBeLessThanOrEqual(1);
-    expect(metrics.questionsTop).toBeGreaterThan(metrics.introBottom);
+    expect(metrics.content, `Gallery overflows at ${width}px`).toBeLessThanOrEqual(metrics.viewport + 1);
+    expect(metrics.columns.trim().split(/\s+/)).toHaveLength(12);
+    expect(metrics.diningLeft).toBeGreaterThan(metrics.livingLeft);
+    expect(metrics.diningLeft).toBeGreaterThanOrEqual(metrics.livingRight);
+    expect(metrics.diningTop).toBeGreaterThan(metrics.livingTop);
   }
 });
 

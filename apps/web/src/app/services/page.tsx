@@ -4,17 +4,22 @@ import { ConsultationCta, ResponsiveImage, SectionHeading } from "@/components/u
 import {
   audioTouchscreen,
   cinemaRoom,
+  control4KeypadWall,
+  control4TouchscreenEvening,
+  control4TouchscreenHallway,
   exteriorSecurityCamera,
   handheldMediaController,
   homeTheatre,
+  integrationRack,
+  sceneKeypadSix,
   videoDoorStation
 } from "@/content/fixtures";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
-  title: "Audio, Security & Remote Management",
+  title: "Integrated Smart-Space Services",
   description:
-    "Explore considered audio systems, integrated security and remote management for connected homes and spaces.",
+    "Explore six connected-space services spanning whole-home control, lighting, audio, networking, integrated security and remote management.",
   path: "/services",
   image: audioTouchscreen.src
 });
@@ -22,7 +27,10 @@ export const metadata = createMetadata({
 const serviceLinks = [
   { number: "01", label: "Audio systems", href: "#audio-systems" },
   { number: "02", label: "Integrated security", href: "#integrated-security" },
-  { number: "03", label: "Remote management", href: "#remote-management" }
+  { number: "03", label: "Remote management", href: "#remote-management" },
+  { number: "04", label: "Whole-home control", href: "#whole-home-control" },
+  { number: "05", label: "Lighting & shading", href: "#lighting-and-shading" },
+  { number: "06", label: "Networks & infrastructure", href: "#networks-and-infrastructure" }
 ] as const;
 
 const audioFeatures = [
@@ -41,6 +49,24 @@ const remoteFeatures = [
   "Status visibility for supported devices",
   "Service alerts and permission-based diagnostics",
   "Clear escalation when on-site support is needed"
+] as const;
+
+const wholeHomeFeatures = [
+  "Room and whole-property scenes",
+  "Keypad, touchscreen and app coordination",
+  "Clear local control and manual fallbacks"
+] as const;
+
+const lightingFeatures = [
+  "Scene-led lighting design",
+  "Compatible curtain and blind control",
+  "Controls coordinated with the interior"
+] as const;
+
+const networkFeatures = [
+  "Wired and wireless coverage planning",
+  "Structured cabling and equipment locations",
+  "Labelling, ventilation and service access"
 ] as const;
 
 function ServiceFeatures({ items }: { items: readonly string[] }) {
@@ -196,6 +222,66 @@ export default function ServicesPage() {
               Everyday control stays simple; remote support remains a separate,
               permission-based service for compatible systems.
             </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section className="section services-chapter services-chapter--whole-home" id="whole-home-control" aria-labelledby="whole-home-control-heading">
+        <div className="container services-chapter__grid">
+          <div className="services-chapter__copy stack">
+            <span className="eyebrow">04 · Whole-home control</span>
+            <h2 id="whole-home-control-heading" className="heading-xl">One language for the whole space.</h2>
+            <p className="lede">Compatible lighting, curtains, comfort and entertainment can come together through scenes and interfaces that feel consistent from room to room.</p>
+            <p>The system is shaped around everyday actions rather than equipment lists, with useful local control always kept close at hand.</p>
+            <ServiceFeatures items={wholeHomeFeatures} />
+          </div>
+          <div className="services-gallery services-gallery--whole-home" aria-label="Whole-home control examples">
+            <figure className="services-gallery__primary">
+              <div className="services-gallery__image"><ResponsiveImage image={control4TouchscreenHallway} fill sizes="(max-width: 780px) 100vw, 38vw" /></div>
+              <figcaption><span aria-hidden="true">04A</span> A shared control language for lighting, comfort and room scenes.</figcaption>
+            </figure>
+            <figure className="services-gallery__secondary">
+              <div className="services-gallery__image"><ResponsiveImage image={control4TouchscreenEvening} fill sizes="(max-width: 780px) 100vw, 26vw" /></div>
+              <figcaption><span aria-hidden="true">04B</span> Familiar actions remain available directly in the room.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section className="section services-chapter services-chapter--dark services-chapter--lighting" id="lighting-and-shading" aria-labelledby="lighting-and-shading-heading">
+        <div className="container services-chapter__grid">
+          <div className="services-chapter__copy stack">
+            <span className="eyebrow">05 · Lighting & shading</span>
+            <h2 id="lighting-and-shading-heading" className="heading-xl">Atmosphere, recalled simply.</h2>
+            <p className="lede">Architectural lighting and compatible window treatments can be coordinated around how a room looks, feels and changes through the day.</p>
+            <p>Scenes make layered settings easy to recall, while keypads are planned with the interior so the technology feels intentional rather than added later.</p>
+            <ServiceFeatures items={lightingFeatures} />
+          </div>
+          <div className="services-gallery services-gallery--lighting" aria-label="Lighting and shading examples">
+            <figure className="services-gallery__primary">
+              <div className="services-gallery__image"><ResponsiveImage image={sceneKeypadSix} fill sizes="(max-width: 780px) 100vw, 38vw" /></div>
+              <figcaption><span aria-hidden="true">05A</span> Clearly named scenes turn layered lighting into one simple action.</figcaption>
+            </figure>
+            <figure className="services-gallery__secondary">
+              <div className="services-gallery__image"><ResponsiveImage image={control4KeypadWall} fill sizes="(max-width: 780px) 100vw, 26vw" /></div>
+              <figcaption><span aria-hidden="true">05B</span> Controls selected to sit calmly alongside the room finishes.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section className="section services-chapter services-chapter--network" id="networks-and-infrastructure" aria-labelledby="networks-and-infrastructure-heading">
+        <div className="container services-chapter__grid">
+          <div className="services-chapter__copy stack">
+            <span className="eyebrow">06 · Networks & infrastructure</span>
+            <h2 id="networks-and-infrastructure-heading" className="heading-xl">A stronger foundation behind the finish.</h2>
+            <p className="lede">Coverage, cabling and equipment space are planned early so connected systems have an organised and supportable foundation.</p>
+            <p>A considered backbone protects the finished experience from avoidable clutter and leaves practical room for commissioning, maintenance and future change.</p>
+            <ServiceFeatures items={networkFeatures} />
+          </div>
+          <figure className="services-remote-media services-network-media">
+            <div className="services-remote-media__image"><ResponsiveImage image={integrationRack} fill sizes="(max-width: 780px) 100vw, 48vw" /></div>
+            <figcaption>Control, audio and network equipment organised in one clearly serviceable location.</figcaption>
           </figure>
         </div>
       </section>

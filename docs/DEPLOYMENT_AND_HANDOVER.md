@@ -4,9 +4,10 @@
 
 - The website and Studio are branded for Synchro Spaces.
 - The verified [@synchro_spaces](https://www.instagram.com/synchro_spaces/) profile is linked from the public site and included in Organization JSON-LD.
+- The published phone (`+91 7210800077`) and email (`synchrospaces@gmail.com`) appear in the shared footer and Organization JSON-LD.
 - Seventeen user-supplied images are integrated under `apps/web/public/images/synchro-spaces/`.
 - The canonical public origin is `https://www.synchro-spaces.com`.
-- Phone, email, address, hours, and service geography remain empty and are omitted from public and structured output.
+- Address, hours, and service geography remain empty and are omitted from public and structured output.
 - Image and Control4-logo publication rights, live delivery integrations, legal copy, and any dealer/partner claims are not yet approved.
 
 ## Launch gates
@@ -15,7 +16,7 @@ Do not treat implementation completion as launch approval. Before production ind
 
 1. Written confirmation of publication rights for all seventeen supplied images and any required credits or third-party permissions.
 2. Written approval for the supplied Control4 logo placement and required trademark treatment.
-3. Phone, email, address, hours, or service-location details only if Synchro Spaces wants them published.
+3. Address, hours, or service-location details only if Synchro Spaces wants them published.
 4. CRM/email provider selection, field mapping, credentials, sender addresses, and domain authentication if live lead delivery is required.
 5. Jurisdiction-appropriate privacy, cookie, retention, terms, accessibility, and enquiry-consent review.
 6. Evidence and approved wording for every Control4 dealer, technology partner, supported brand, certification, licence, award, or performance claim.

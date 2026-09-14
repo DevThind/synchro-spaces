@@ -4,9 +4,7 @@ import { ConsultationCta, FaqAccordion, ResponsiveImage, SectionHeading } from "
 import { getFaqs } from "@/content";
 import {
   control4KeypadCollection,
-  control4KeypadWall,
-  control4TouchscreenEvening,
-  control4TouchscreenHallway
+  control4TouchscreenEvening
 } from "@/content/fixtures";
 import { createMetadata } from "@/lib/metadata";
 
@@ -39,7 +37,7 @@ export default async function Control4Page() {
       </div>
     </header>
     <section className="section" id="control4-planning"><div className="container split control4-intro">
-      <div className="split-copy stack"><span className="eyebrow">Platform-aware planning</span><h2 className="heading-xl">Design the interaction, then resolve the integration.</h2><p className="lede">Lighting, curtains, comfort, music, media and selected access devices can each play a role in the same experience.</p><p>The project still needs considered infrastructure, clear interfaces, useful manual control and defined boundaries around privacy, security and specialist systems.</p><p>Control4 is a third-party trademark. Its inclusion does not state a manufacturer partnership or dealer status.</p></div>
+      <div className="split-copy stack"><span className="eyebrow">Platform-aware planning</span><h2 className="heading-xl">Design the interaction, then resolve the integration.</h2><p className="lede">Lighting, curtains, comfort, music, media and selected access devices can each play a role in the same experience.</p><p>The project still needs considered infrastructure, clear interfaces, useful manual control and defined boundaries around privacy, security and specialist systems.</p><p className="control4-compatibility-note"><strong>Made to work with familiar brands.</strong> Compatible products from LG, Sony, Samsung, Sonos and many more can be brought into one simple experience, with exact model support confirmed for every project.</p><p>Control4 is a third-party trademark. Its inclusion does not state a manufacturer partnership or dealer status.</p></div>
       <div className="split-media control4-media--portrait"><ResponsiveImage image={control4TouchscreenEvening} fill sizes="(max-width: 780px) 100vw, 42vw" /></div>
     </div></section>
     <section className="section section--navy"><div className="container">
@@ -50,19 +48,6 @@ export default async function Control4Page() {
         { icon: CircleCheck, title: "Purposeful", text: "Scenes and schedules are defined around real routines, with manual control close at hand." },
         { icon: ShieldCheck, title: "Bounded", text: "Security, life-safety, privacy and credential responsibilities remain explicit." }
       ].map(({ icon: Icon, title, text }) => <article className="dark-feature" key={title}><Icon aria-hidden="true" /><h3>{title}</h3><p>{text}</p></article>)}</div>
-    </div></section>
-    <section className="section section--paper"><div className="container">
-      <SectionHeading eyebrow="Control in context" title="Designed to be used. Detailed to belong." intro="Touchscreens and keypads can keep common actions close at hand while fitting quietly alongside the architecture and finishes." />
-      <div className="control4-scenes">
-        <figure className="control4-scene control4-scene--wide">
-          <div className="control4-scene__media"><ResponsiveImage image={control4TouchscreenHallway} fill sizes="(max-width: 780px) 100vw, 60vw" /></div>
-          <figcaption><span aria-hidden="true">01</span> A clear view of lighting and scenes, with local control directly below.</figcaption>
-        </figure>
-        <figure className="control4-scene control4-scene--detail">
-          <div className="control4-scene__media"><ResponsiveImage image={control4KeypadWall} fill sizes="(max-width: 780px) 100vw, 36vw" /></div>
-          <figcaption><span aria-hidden="true">02</span> Named actions in a finish chosen to sit calmly within the room.</figcaption>
-        </figure>
-      </div>
     </div></section>
     <section className="section"><div className="container content-grid">
       <div className="stack"><span className="eyebrow">Important boundary</span><h2 className="heading-lg">This website never connects to your system.</h2><p className="lede">Never enter Control4 usernames, passwords, alarm codes, door codes, network credentials or detailed security layouts into the enquiry form.</p></div>

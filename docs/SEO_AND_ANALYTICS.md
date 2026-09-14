@@ -4,7 +4,7 @@ The Synchro Spaces site uses the Next.js metadata API for unique titles, descrip
 
 Only render FAQ structured data when the questions and full answers are visible on the same page and comply with current search-engine eligibility rules. Optional organization contact and location properties must remain absent unless verified values are supplied and approved for publication.
 
-The Organization entity currently publishes only the verified Synchro Spaces identity, site URL, description, and Instagram profile. Phone, email, postal address, and area served are omitted because they have not been supplied. Service structured data also omits a geographic service area while that information remains unknown. Do not add a city, country, local-business subtype, contact detail, dealer status, or partner claim solely for richer search results.
+The Organization entity publishes the verified Synchro Spaces identity, site URL, description, phone, email, and Instagram profile. Postal address and area served are omitted because they have not been supplied. Service structured data also omits a geographic service area while that information remains unknown. Do not add a city, country, local-business subtype, additional contact detail, dealer status, or partner claim solely for richer search results.
 
 `NEXT_PUBLIC_SITE_URL` can override the approved canonical origin. The committed fallback is `https://www.synchro-spaces.com`; local environments may set a localhost origin when metadata URLs need local verification.
 

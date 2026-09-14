@@ -16,16 +16,16 @@ export function Footer() {
   const hasAddress = Boolean(siteConfig.address.trim());
 
   return (
-    <footer className="site-footer">
+    <footer className="site-footer" id="site-footer">
       <div className="container footer-main">
         <div className="footer-brand stack">
           <Link className="brand" href="/" aria-label={`${siteConfig.companyName} home`}><BrandMark /><span>{siteConfig.companyName}</span></Link>
           <p>{siteConfig.shortDescription}</p>
-          {hasAddress || hasVerifiedPhone || hasVerifiedEmail ? <p>
-            {hasAddress ? <>{siteConfig.address}<br /></> : null}
-            {hasVerifiedPhone ? <><a href={`tel:${siteConfig.phone.replace(/[^+\d]/g, "")}`}>{siteConfig.phone}</a><br /></> : null}
-            {hasVerifiedEmail ? <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a> : null}
-          </p> : null}
+          {hasAddress || hasVerifiedPhone || hasVerifiedEmail ? <address className="footer-contact">
+            {hasAddress ? <span><span className="footer-contact__label">Office</span><span>{siteConfig.address}</span></span> : null}
+            {hasVerifiedPhone ? <a href={`tel:${siteConfig.phone.replace(/[^+\d]/g, "")}`} data-analytics-event="phone_click"><span className="footer-contact__label">Phone</span><span>{siteConfig.phone}</span></a> : null}
+            {hasVerifiedEmail ? <a href={`mailto:${siteConfig.email}`} data-analytics-event="email_click"><span className="footer-contact__label">Email</span><span>{siteConfig.email}</span></a> : null}
+          </address> : null}
           {instagram ? <p><a className="text-link" href={instagram} target="_blank" rel="noreferrer" aria-label="Follow Synchro Spaces on Instagram (opens in a new tab)">Instagram <span aria-hidden="true">↗</span></a></p> : null}
         </div>
         <div className="footer-group footer-group--projects">
