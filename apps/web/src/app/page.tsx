@@ -60,7 +60,7 @@ export default function HomePage() {
           <div className="hero-copy stack">
             <span className="eyebrow">Synchro Spaces · Smart living, composed</span>
             <h1 id="hero-heading" className="display">
-              Intelligence you can feel. Not see.
+              Smart living, beautifully resolved.
             </h1>
             <p className="hero-lede">
               Lighting, curtains, comfort and entertainment—brought together in
@@ -91,7 +91,6 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-        <p className="hero-caption">Scene control · Client-supplied photography</p>
       </section>
 
       <section className="section section--intro" aria-labelledby="intro-heading">
@@ -118,7 +117,6 @@ export default function HomePage() {
               fill
               sizes="(max-width: 780px) 100vw, 58vw"
             />
-            <span className="image-index" aria-hidden="true">01 / Control in context</span>
           </div>
           <div className="control4-feature__copy stack">
             <span className="eyebrow">Control4</span>

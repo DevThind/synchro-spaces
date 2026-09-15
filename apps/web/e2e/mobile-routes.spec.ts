@@ -247,7 +247,8 @@ test("phone form controls remain comfortable to tap", async ({ page }, testInfo)
   const metrics = await page.evaluate(() => {
     const form = document.querySelector<HTMLElement>(".lead-form")!.getBoundingClientRect();
     const submit = document.querySelector<HTMLButtonElement>('.lead-form button[type="submit"]')!.getBoundingClientRect();
-    const controls = [...document.querySelectorAll<HTMLElement>('.lead-form input:not([type="checkbox"]):not([tabindex="-1"]), .lead-form select, .lead-form textarea')];
+    const controls = [...document.querySelectorAll<HTMLElement>('.lead-form input:not([type="checkbox"]):not([tabindex="-1"]), .lead-form select, .lead-form textarea')]
+      .filter((control) => control.getClientRects().length > 0);
     return {
       formWidth: form.width,
       submitWidth: submit.width,

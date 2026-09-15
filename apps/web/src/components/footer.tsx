@@ -24,7 +24,7 @@ export function Footer() {
           {hasAddress || hasVerifiedPhone || hasVerifiedEmail ? <address className="footer-contact">
             {hasAddress ? <span><span className="footer-contact__label">Office</span><span>{siteConfig.address}</span></span> : null}
             {hasVerifiedPhone ? <a href={`tel:${siteConfig.phone.replace(/[^+\d]/g, "")}`} data-analytics-event="phone_click"><span className="footer-contact__label">Phone</span><span>{siteConfig.phone}</span></a> : null}
-            {hasVerifiedEmail ? <a href={`mailto:${siteConfig.email}`} data-analytics-event="email_click"><span className="footer-contact__label">Email</span><span>{siteConfig.email}</span></a> : null}
+            {hasVerifiedEmail ? <a href={`mailto:${siteConfig.email}`} aria-label={`Email ${siteConfig.companyName} at ${siteConfig.email}`} data-analytics-event="email_click"><span className="footer-contact__label">Email</span><span>Email us directly</span></a> : null}
           </address> : null}
           {instagram ? <p><a className="text-link" href={instagram} target="_blank" rel="noreferrer" aria-label="Follow Synchro Spaces on Instagram (opens in a new tab)">Instagram <span aria-hidden="true">↗</span></a></p> : null}
         </div>

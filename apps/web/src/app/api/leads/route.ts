@@ -31,7 +31,7 @@ export async function POST(request: Request) {
 
     await getCrmAdapter().submit(parsed.data, requestId);
     const email = getEmailAdapter();
-    const messages = [email.send(confirmationMail(parsed.data))];
+    const messages = parsed.data.email ? [email.send(confirmationMail(parsed.data))] : [];
     if (process.env.LEAD_TEAM_EMAIL) messages.push(email.send(teamMail(parsed.data, requestId, process.env.LEAD_TEAM_EMAIL)));
     await Promise.all(messages);
 
@@ -41,4 +41,3 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, message: "We could not deliver your request. Please try again later.", requestId }, { status: 502 });
   }
 }
-

@@ -13,7 +13,7 @@ export default function PrivacyPage() {
     <PageHero eyebrow="Privacy" title="Collect less. Explain it clearly." intro="This notice describes how information is handled when you use this website or send a consultation request." aside="Last updated 5 September 2026." />
     <section className="section"><div className="container prose">
       <h2>Information you choose to provide</h2>
-      <p>The consultation form collects your name, email address, phone number, project location and the project details you enter, including type, stage, services of interest, preferred contact method and message.</p>
+      <p>The consultation form collects your name, preferred contact method, the corresponding email address or phone number, project location and the project description you enter. You may also choose to provide the project context, stage, services of interest and preferred consultation timing.</p>
       <p>Do not submit automation credentials, alarm codes, door codes, network passwords, payment information or sensitive security layouts through this website.</p>
       <h2>How a request is handled</h2>
       <p>The information is used to validate, protect and respond to your enquiry. Depending on the website configuration, a valid request may be sent to an enabled customer-relationship service and email provider so the enquiry can be routed and acknowledged.</p>

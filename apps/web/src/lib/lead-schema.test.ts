@@ -4,17 +4,10 @@ import { leadSchema } from "./lead-schema";
 const validLead = {
   name: "Jordan Lee",
   email: "jordan@example.ca",
-  phone: "+1 416 555 0142",
-  audience: "residential",
-  projectType: "renovation",
-  location: "Toronto, Ontario",
-  servicesOfInterest: ["automation", "lighting-shading"],
-  buildType: "renovation",
-  stage: "design",
+  phone: "",
   preferredContactMethod: "email",
-  preferredTiming: "afternoon",
+  location: "Toronto, Ontario",
   message: "We are planning a full-floor renovation and want to coordinate infrastructure before rough-in.",
-  privacyAcknowledgement: true,
   turnstileToken: "",
   website: ""
 };
@@ -29,9 +22,23 @@ describe("leadSchema", () => {
     expect(result.success).toBe(false);
   });
 
-  it("requires privacy acknowledgement and useful project context", () => {
-    const result = leadSchema.safeParse({ ...validLead, privacyAcknowledgement: false, message: "short" });
+  it("requires useful project context", () => {
+    const result = leadSchema.safeParse({ ...validLead, message: "short" });
     expect(result.success).toBe(false);
   });
-});
 
+  it("requires only the contact detail that matches the selected method", () => {
+    expect(leadSchema.safeParse({ ...validLead, email: "" }).success).toBe(false);
+    expect(leadSchema.safeParse({ ...validLead, preferredContactMethod: "phone", email: "", phone: "+91 7210800077" }).success).toBe(true);
+  });
+
+  it("accepts optional planning details when supplied", () => {
+    expect(leadSchema.safeParse({
+      ...validLead,
+      audience: "residential",
+      stage: "design",
+      servicesOfInterest: ["automation", "lighting-shading"],
+      preferredTiming: "afternoon"
+    }).success).toBe(true);
+  });
+});

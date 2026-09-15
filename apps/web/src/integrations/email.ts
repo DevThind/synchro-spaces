@@ -22,5 +22,19 @@ export function getEmailAdapter(): EmailAdapter {
   return new DevelopmentEmailAdapter();
 }
 
-export function confirmationMail(lead: LeadPayload): Mail { return { to: lead.email, subject: "Synchro Spaces received your enquiry", text: `Hello ${lead.name},\n\nThank you for sharing the initial context for your ${lead.audience} project with Synchro Spaces. The team will review your enquiry and respond using your preferred contact method.\n\nFor your security, never email automation passwords, alarm codes, door codes, network credentials, or sensitive security layouts.\n\nThis is an acknowledgement, not confirmation of project scope, compatibility, schedule, or availability.` }; }
-export function teamMail(lead: LeadPayload, requestId: string, teamEmail: string): Mail { return { to: teamEmail, replyTo: lead.email, subject: `Website consultation · ${lead.audience} · ${requestId}`, text: `Request: ${requestId}\nName: ${lead.name}\nEmail: ${lead.email}\nPhone: ${lead.phone}\nAudience: ${lead.audience}\nProject type: ${lead.projectType}\nBuild type: ${lead.buildType}\nStage: ${lead.stage}\nLocation: ${lead.location}\nServices: ${lead.servicesOfInterest.join(", ")}\nPreferred contact: ${lead.preferredContactMethod}\nPreferred timing: ${lead.preferredTiming}\n\nMessage:\n${lead.message}` }; }
+export function confirmationMail(lead: LeadPayload): Mail {
+  return {
+    to: lead.email,
+    subject: "Synchro Spaces received your enquiry",
+    text: `Hello ${lead.name},\n\nThank you for sharing your project with Synchro Spaces. The team will review your enquiry and respond by email.\n\nFor your security, never email automation passwords, alarm codes, door codes, network credentials, or sensitive security layouts.\n\nThis is an acknowledgement, not confirmation of project scope, compatibility, schedule, or availability.`
+  };
+}
+
+export function teamMail(lead: LeadPayload, requestId: string, teamEmail: string): Mail {
+  return {
+    to: teamEmail,
+    replyTo: lead.email || undefined,
+    subject: `Website consultation · ${lead.audience ?? "project enquiry"} · ${requestId}`,
+    text: `Request: ${requestId}\nName: ${lead.name}\nEmail: ${lead.email || "Not provided"}\nPhone: ${lead.phone || "Not provided"}\nContext: ${lead.audience ?? "Not specified"}\nStage: ${lead.stage ?? "Not specified"}\nLocation: ${lead.location}\nServices: ${lead.servicesOfInterest.length ? lead.servicesOfInterest.join(", ") : "Not specified"}\nPreferred contact: ${lead.preferredContactMethod}\nPreferred timing: ${lead.preferredTiming ?? "No preference"}\n\nMessage:\n${lead.message}`
+  };
+}
