@@ -85,8 +85,8 @@ export function FaqAccordion({ items }: { items: Faq[] }) {
   return <div className="faq-list">{items.map((item) => <details className="faq-item" key={item.id}><summary>{item.question}</summary><div className="faq-answer">{item.answer}</div></details>)}</div>;
 }
 
-export function ConsultationCta() {
-  return <section className="cta" aria-labelledby="consultation-cta"><div className="container cta-inner"><div className="stack"><span className="eyebrow">Start in the right place</span><h2 id="consultation-cta" className="heading-xl">Tell us how you want the space to feel.</h2><p>Share the project stage, the rooms involved and the moments you want to make simpler. Please never include passwords, access codes or sensitive security details.</p></div><Link className="button button--dark" href="/contact" data-analytics-event="booking_click">Start a conversation <ArrowRight size={16} aria-hidden="true" /></Link></div></section>;
+export function ConsultationCta({ className }: { className?: string } = {}) {
+  return <section className={`cta${className ? ` ${className}` : ""}`} aria-labelledby="consultation-cta"><div className="container cta-inner"><div className="stack"><span className="eyebrow">Start in the right place</span><h2 id="consultation-cta" className="heading-xl">Tell us how you want the space to feel.</h2><p>Share the project stage, the rooms involved and the moments you want to make simpler. Please never include passwords, access codes or sensitive security details.</p></div><Link className="button button--dark" href="/contact" data-analytics-event="booking_click">Start a conversation <ArrowRight size={16} aria-hidden="true" /></Link></div></section>;
 }
 
 export function FeatureList({ items }: { items: string[] }) {

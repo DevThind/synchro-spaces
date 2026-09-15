@@ -505,7 +505,7 @@ a, button, input, textarea, select, summary { touch-action: manipulation; }
 .footer-brand p { max-width: 27rem; }
 .footer-contact { width: fit-content; display: grid; gap: .55rem; margin: 0; font-style: normal; }
 .footer-contact > span, .footer-contact a { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr); gap: .75rem; align-items: baseline; color: var(--paper-50); text-decoration: none; }
-.footer-contact__label { color: var(--teal-300); font-size: .64rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.footer-contact__label { color: var(--teal-300); font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 .footer-contact a:hover { color: var(--teal-300); }
 .footer-title { margin: 0 0 1rem; color: var(--paper-50); font-size: .75rem; letter-spacing: .13em; text-transform: uppercase; }
 .footer-links { display: grid; gap: .55rem; }
@@ -616,6 +616,19 @@ a, button, input, textarea, select, summary { touch-action: manipulation; }
 
 @media (min-width: 781px) {
   .form-layout > .aside-card { position: sticky; top: 7rem; }
+  .hero--control4 .display { font-size: clamp(4.75rem, 6.2vw, 5.75rem); }
+}
+
+@media (min-width: 1281px) {
+  .home-intro .intro-grid { grid-template-columns: minmax(0, .85fr) minmax(18rem, 1fr); }
+  .home-intro .heading-xl,
+  .home-projects .heading-xl,
+  .home-cta .heading-xl { font-size: min(5vw, 4.5rem); }
+  .home-projects .gateway-card__copy h3 { font-size: min(3.2vw, 2.875rem); }
+  .hero--control4 .eyebrow,
+  .home-intro .eyebrow,
+  .home-projects .eyebrow,
+  .home-cta .eyebrow { font-size: .75rem; }
 }
 
 .cookie-banner { position: static; z-index: 1; width: min(100%, var(--container)); display: grid; grid-template-columns: minmax(10rem, .45fr) minmax(20rem, 1.2fr) auto; align-items: center; gap: .8rem 1.5rem; margin-inline: auto; padding-block: 1.15rem max(1.15rem, env(safe-area-inset-bottom)); padding-inline-start: max(var(--gutter), env(safe-area-inset-left)); padding-inline-end: max(var(--gutter), env(safe-area-inset-right)); border-top: 1px solid rgba(255,255,255,.12); background: var(--ink-900); color: var(--paper-50); }

@@ -93,7 +93,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section section--intro" aria-labelledby="intro-heading">
+      <section className="section section--intro home-intro" aria-labelledby="intro-heading">
         <div className="container intro-grid">
           <div className="intro-grid__heading stack">
             <span className="eyebrow">The Synchro idea</span>
@@ -139,7 +139,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section section--paper" aria-labelledby="destinations-heading">
+      <section className="section section--paper home-projects" aria-labelledby="destinations-heading">
         <div className="container">
           <div id="destinations-heading">
             <SectionHeading
@@ -176,7 +176,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <ConsultationCta />
+      <ConsultationCta className="home-cta" />
     </>
   );
 }
