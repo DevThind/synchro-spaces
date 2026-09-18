@@ -17,8 +17,8 @@ import {
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
-  title: "Residential Projects",
-  description: "Explore completed residential spaces where lighting, entertainment and discreet control are composed around the architecture.",
+  title: "Residential Project Galleries",
+  description: "Explore two residential galleries showing visible lighting, entertainment, room controls, access and connected infrastructure.",
   path: "/residential",
   image: residentialLivingRoomProject.src
 });
@@ -27,28 +27,28 @@ const projectPrinciples = [
   {
     number: "01",
     title: "Architecture remains the focus",
-    text: "Technology is positioned, finished and controlled so the room reads as a complete interior—not a collection of devices."
+    text: "Displays, speakers, keypads and lighting details are shown in relation to the interior rather than as isolated products."
   },
   {
     number: "02",
     title: "Light builds the atmosphere",
-    text: "Recessed, concealed and decorative lighting work in layers, giving everyday scenes depth without visual clutter."
+    text: "The photographs show recessed, concealed and decorative lighting used together in the finished rooms."
   },
   {
     number: "03",
     title: "Control stays close at hand",
-    text: "The useful actions belong where people naturally need them, while the supporting infrastructure stays quietly out of sight."
+    text: "Clearly labelled wall keypads provide local actions while central equipment is kept in a dedicated rack."
   }
 ] as const;
 
 const projectTwoDetails = [
-  { image: residentialProjectTwoDining, caption: "Dining space · Warm timber, decorative pendants and integrated ceiling audio." },
-  { image: residentialProjectTwoKitchen, caption: "Kitchen · Lighting and audio resolved within the architectural ceiling." },
-  { image: residentialProjectTwoLightingPanel, caption: "Central lighting · The working layer behind simple room scenes." },
-  { image: residentialProjectTwoSixSceneKeypad, caption: "Room control · Clearly named actions for connected spaces." },
-  { image: residentialProjectTwoYaleLock, caption: "Access · A connected lock integrated at the point of entry." },
-  { image: residentialProjectTwoThreeSceneKeypad, caption: "Everyday scenes · Welcome, Curtain and Away kept close at hand." },
-  { image: residentialProjectTwoEquipmentRack, caption: "Infrastructure · Control, audio, networking and surveillance organised in one rack." }
+  { image: residentialProjectTwoDining, caption: "Dining room · Timber finishes, pendant lights, recessed lights and ceiling speakers." },
+  { image: residentialProjectTwoKitchen, caption: "Kitchen · Recessed lighting and ceiling speakers above the island and worktops." },
+  { image: residentialProjectTwoLightingPanel, caption: "Lighting panel · Control4 modules installed inside a recessed enclosure." },
+  { image: residentialProjectTwoSixSceneKeypad, caption: "Six-button keypad · Labels include Steps, Kitchen, Picture, Curtain, Dining and Living." },
+  { image: residentialProjectTwoYaleLock, caption: "Entrance door · Yale touchscreen lock fitted to the timber door." },
+  { image: residentialProjectTwoThreeSceneKeypad, caption: "Three-button keypad · Welcome, Curtain and Away are available at the wall." },
+  { image: residentialProjectTwoEquipmentRack, caption: "Central rack · Control, audio, network and camera equipment grouped in one location." }
 ] as const;
 
 export default function ResidentialPage() {
@@ -58,12 +58,12 @@ export default function ResidentialPage() {
         <div className="portfolio-hero__copy stack">
           <span className="eyebrow">Residential project journal</span>
           <h1 className="display">Residential projects.</h1>
-          <p className="hero-lede">Completed homes where light, sound and control are designed to belong.</p>
-          <a className="text-link portfolio-hero__link" href="#residential-gallery">View the projects <ArrowDown size={17} aria-hidden="true" /></a>
+          <p className="hero-lede">Two supplied photo sets showing lighting, entertainment, controls and the equipment behind them.</p>
+          <a className="text-link portfolio-hero__link" href="#project-01">View the projects <ArrowDown size={17} aria-hidden="true" /></a>
         </div>
         <figure className="portfolio-hero__media">
           <ResponsiveImage image={residentialLivingRoomProject} fill priority sizes="(max-width: 780px) 100vw, 56vw" />
-          <figcaption>Project 01 · Private residence</figcaption>
+          <figcaption>Project 01 · Residential interior</figcaption>
         </figure>
       </div>
     </header>
@@ -71,59 +71,59 @@ export default function ResidentialPage() {
     <section className="section section--paper portfolio-intro" aria-labelledby="residential-intro-heading">
       <div className="container portfolio-intro__grid">
         <div className="stack">
-          <span className="eyebrow">Two completed residences</span>
-          <h2 id="residential-intro-heading" className="heading-xl">Different homes. One considered approach.</h2>
+          <span className="eyebrow">Two separate residences</span>
+          <h2 id="residential-intro-heading" className="heading-xl">Each home has its own story.</h2>
         </div>
         <div className="portfolio-intro__copy">
-          <p className="lede">These galleries document two separate residential projects, each with its own architecture, material palette and relationship to technology.</p>
-          <p>Project 01 is a polished living and dining interior shaped by layered illumination. Project 02 moves from a warmly lit exterior into timber-lined rooms, scene controls and the organised infrastructure behind them.</p>
+          <p className="lede">The photographs are grouped by property so details from one home are never presented as part of another.</p>
+          <p>Project 01 contains two interior views. Project 02 moves from the exterior into the kitchen and dining room, then documents lighting hardware, keypads, a lock and the central rack. Locations, dates and Synchro Spaces’ exact scope await client approval.</p>
         </div>
       </div>
     </section>
 
-    <section className="section portfolio-gallery-section" id="residential-gallery" aria-labelledby="residential-gallery-heading" data-project="01">
+    <section className="section portfolio-gallery-section" id="project-01" aria-labelledby="residential-gallery-heading" data-project="01">
       <div className="container">
         <div className="portfolio-gallery__heading">
           <div className="stack">
             <span className="eyebrow">Project 01</span>
-            <h2 id="residential-gallery-heading" className="heading-lg">Living, dining and the moments between.</h2>
+            <h2 id="residential-gallery-heading" className="heading-lg">Living and dining.</h2>
           </div>
           <p>Client-supplied project photography</p>
         </div>
         <div className="portfolio-gallery">
           <figure className="portfolio-gallery__item portfolio-gallery__item--living">
             <div className="portfolio-gallery__media"><ResponsiveImage image={residentialLivingRoomProject} fill sizes="(max-width: 780px) 100vw, 58vw" /></div>
-            <figcaption><span aria-hidden="true">01</span><span>Living room · Integrated display, ceiling audio and layered illumination.</span></figcaption>
+            <figcaption><span aria-hidden="true">01</span><span>Living room · Wall-mounted display, ceiling speakers, recessed lights and concealed perimeter lighting.</span></figcaption>
           </figure>
           <figure className="portfolio-gallery__item portfolio-gallery__item--dining">
             <div className="portfolio-gallery__media"><ResponsiveImage image={residentialDiningRoomProject} fill priority sizes="(max-width: 780px) 100vw, 40vw" /></div>
-            <figcaption><span aria-hidden="true">02</span><span>Dining room · Decorative and architectural light working as one composition.</span></figcaption>
+            <figcaption><span aria-hidden="true">02</span><span>Dining room · Sculptural pendant, recessed downlights, perimeter lighting and ceiling speakers.</span></figcaption>
           </figure>
         </div>
       </div>
     </section>
 
-    <section className="section section--paper portfolio-project-two" aria-labelledby="residential-project-two-heading" data-project="02">
+    <section className="section section--paper portfolio-project-two" id="project-02" aria-labelledby="residential-project-two-heading" data-project="02">
       <div className="container">
         <div className="portfolio-project-two__header">
           <div className="stack">
             <span className="eyebrow">Project 02 · Separate residence</span>
-            <h2 id="residential-project-two-heading" className="heading-xl">Warm light, from the façade inward.</h2>
+            <h2 id="residential-project-two-heading" className="heading-xl">From the exterior to the equipment room.</h2>
           </div>
           <div>
-            <p className="lede">A second home with a completely different character: softly illuminated architecture outside, natural timber within and a connected foundation working quietly behind the rooms.</p>
-            <p>The gallery moves from the exterior expression to the controls and equipment that support daily scenes, lighting, access, audio and networking.</p>
+            <p className="lede">This second photo set records a different home: exterior lighting, timber-lined rooms, wall controls, a connected lock and the central equipment rack.</p>
+            <p>The sequence moves from wide architectural views to close details so the relationship between the rooms and their controls is easy to follow.</p>
           </div>
         </div>
 
         <div className="portfolio-exterior-gallery" aria-label="Project 02 exterior views">
           <figure className="portfolio-exterior-gallery__wide">
             <div className="portfolio-exterior-gallery__media"><ResponsiveImage image={residentialProjectTwoExteriorNight} fill priority sizes="(max-width: 780px) 100vw, 60vw" /></div>
-            <figcaption><span aria-hidden="true">01</span><span>Rear elevation · Architectural light defining the home after dark.</span></figcaption>
+            <figcaption><span aria-hidden="true">01</span><span>Rear elevation · Warm exterior and landscape lighting after dark.</span></figcaption>
           </figure>
           <figure className="portfolio-exterior-gallery__portrait">
             <div className="portfolio-exterior-gallery__media"><ResponsiveImage image={residentialProjectTwoExteriorTwilight} fill sizes="(max-width: 780px) 100vw, 38vw" /></div>
-            <figcaption><span aria-hidden="true">02</span><span>Street elevation · A softer transition into evening.</span></figcaption>
+            <figcaption><span aria-hidden="true">02</span><span>Street elevation · Balcony, soffit and landscape lighting at twilight.</span></figcaption>
           </figure>
         </div>
 
@@ -139,8 +139,8 @@ export default function ResidentialPage() {
     <section className="section section--navy portfolio-principles" aria-labelledby="residential-principles-heading">
       <div className="container">
         <div className="portfolio-principles__header stack">
-          <span className="eyebrow">What the photographs reveal</span>
-          <h2 id="residential-principles-heading" className="heading-xl">Technology earns its place by belonging.</h2>
+          <span className="eyebrow">Visible project details</span>
+          <h2 id="residential-principles-heading" className="heading-xl">Rooms first. Controls close at hand.</h2>
         </div>
         <ol className="portfolio-principles__list">
           {projectPrinciples.map((principle) => <li key={principle.number}>

@@ -1,12 +1,13 @@
-import { ConsultationCta, PageHero, ProcessSteps, SectionHeading } from "@/components/ui";
-import { integrationRack, processSteps } from "@/content/fixtures";
+import { ProcessJourney } from "@/components/process-journey";
+import { ConsultationCta, PageHero, SectionHeading } from "@/components/ui";
+import { processHero, processSteps } from "@/content/fixtures";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
   title: "Our Smart-Space Process",
   description: "Follow the Synchro Spaces approach from listening and planning through coordination, integration and handover.",
   path: "/process",
-  image: integrationRack.src
+  image: processHero.src
 });
 
 const projectInputs = [
@@ -20,10 +21,10 @@ const projectInputs = [
 
 export default function ProcessPage() {
   return <>
-    <PageHero eyebrow="Process" title="A clear path from first conversation to handover." intro="Listen, plan, coordinate, integrate and hand over: each stage keeps the rooms, routines and project constraints in view." aside="Good integration starts before equipment is selected." />
-    <section className="section section--dark"><div className="container"><ProcessSteps steps={processSteps} /></div></section>
+    <PageHero eyebrow="Process" title="A clear path from brief to handover." intro="The work moves from requirements and drawings to a coordinated design, installation, testing and a practical walkthrough." backgroundImage={processHero} />
+    <section className="section section--dark" aria-label="Interactive project process"><div className="container"><ProcessJourney steps={processSteps} /></div></section>
     <section className="section"><div className="container">
-      <SectionHeading eyebrow="What we ask for" title="Enough context to make the first conversation useful." intro="Plans and project context help. Credentials and sensitive security information do not belong in an online enquiry." />
+      <SectionHeading eyebrow="What we ask for" title="The information that makes a first meeting useful." intro="A floor plan, room priorities, project stage and budget framework help establish the right scope. Sensitive credentials do not belong in an online enquiry." />
       <div className="card-grid">{projectInputs.map(([title, text], index) => <article className="service-card" key={title}><span className="card-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span><h3 className="heading-md">{title}</h3><p>{text}</p></article>)}</div>
     </div></section>
     <ConsultationCta />

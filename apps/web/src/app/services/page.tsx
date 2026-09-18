@@ -89,10 +89,10 @@ export default function ServicesPage() {
         <div className="container services-hero__grid">
           <div className="services-hero__copy stack">
             <span className="eyebrow">Our services</span>
-            <h1 className="display">Technology, considered as part of the space.</h1>
+            <h1 className="display">Plan the controls, cabling and equipment together.</h1>
             <p className="hero-lede">
-              Audio systems, integrated security and remote management—planned
-              around the rooms, routines and people they serve.
+              From speakers and lighting keypads to Wi-Fi coverage and entry cameras,
+              each service is coordinated with the building and the people using it.
             </p>
             <nav className="services-index" aria-label="Jump to a service">
               {serviceLinks.map((service) => (
@@ -119,9 +119,9 @@ export default function ServicesPage() {
       <section className="section section--intro" aria-labelledby="services-intro-heading">
         <div className="container intro-grid">
           <div className="intro-grid__heading stack">
-            <span className="eyebrow">One coordinated approach</span>
+            <span className="eyebrow">One coordinated plan</span>
             <h2 id="services-intro-heading" className="heading-xl">
-              Start with the experience. Resolve the detail behind it.
+              Decide what must work, then specify how.
             </h2>
           </div>
           <p className="lede">
@@ -136,10 +136,10 @@ export default function ServicesPage() {
         <div className="container services-chapter__grid">
           <div className="services-chapter__copy stack">
             <span className="eyebrow">01 · Audio systems</span>
-            <h2 id="audio-systems-heading" className="heading-xl">Every room sounds considered.</h2>
+            <h2 id="audio-systems-heading" className="heading-xl">Music and television without a pile of remotes.</h2>
             <p className="lede">
-              Music and entertainment can be thoughtfully distributed across one
-              room or many, with simple control from the interfaces chosen for the space.
+              Music and entertainment can be distributed across one room or many,
+              with straightforward source, room and volume control.
             </p>
             <p>
               We consider speakers, displays, sources, equipment locations, cable
@@ -153,13 +153,13 @@ export default function ServicesPage() {
               <div className="services-gallery__image">
                 <ResponsiveImage image={homeTheatre} fill sizes="(max-width: 780px) 100vw, 38vw" />
               </div>
-              <figcaption><span aria-hidden="true">01A</span> A dedicated theatre shaped around clear viewing and listening.</figcaption>
+              <figcaption><span aria-hidden="true">01A</span> A dedicated theatre with projection, built-in speakers and local control.</figcaption>
             </figure>
             <figure className="services-gallery__secondary">
               <div className="services-gallery__image">
                 <ResponsiveImage image={cinemaRoom} fill sizes="(max-width: 780px) 100vw, 26vw" />
               </div>
-              <figcaption><span aria-hidden="true">01B</span> Displays, sound and control planned as one room experience.</figcaption>
+              <figcaption><span aria-hidden="true">01B</span> Three displays and ceiling speakers arranged for a dedicated media room.</figcaption>
             </figure>
           </div>
         </div>
@@ -169,10 +169,10 @@ export default function ServicesPage() {
         <div className="container services-chapter__grid">
           <div className="services-chapter__copy stack">
             <span className="eyebrow">02 · Integrated security</span>
-            <h2 id="integrated-security-heading" className="heading-xl">Awareness, without unnecessary complexity.</h2>
+            <h2 id="integrated-security-heading" className="heading-xl">See the entrance and respond from the right interface.</h2>
             <p className="lede">
               Compatible cameras, video door stations, locks, gates, sensors and
-              selected alarm controls can be brought into one considered interface.
+              selected alarm controls can be made available through approved interfaces.
             </p>
             <p>
               Views and notifications are configured around how the property is
@@ -202,7 +202,7 @@ export default function ServicesPage() {
         <div className="container services-chapter__grid">
           <div className="services-chapter__copy stack">
             <span className="eyebrow">03 · Remote management</span>
-            <h2 id="remote-management-heading" className="heading-xl">Support that starts with a clearer picture.</h2>
+            <h2 id="remote-management-heading" className="heading-xl">Check supported devices before arranging a visit.</h2>
             <p className="lede">
               With compatible systems enrolled for remote support, device status
               and service alerts can help identify and resolve some issues without an on-site visit.
@@ -230,9 +230,9 @@ export default function ServicesPage() {
         <div className="container services-chapter__grid">
           <div className="services-chapter__copy stack">
             <span className="eyebrow">04 · Whole-home control</span>
-            <h2 id="whole-home-control-heading" className="heading-xl">One language for the whole space.</h2>
+            <h2 id="whole-home-control-heading" className="heading-xl">The same familiar controls from room to room.</h2>
             <p className="lede">Compatible lighting, curtains, comfort and entertainment can come together through scenes and interfaces that feel consistent from room to room.</p>
-            <p>The system is shaped around everyday actions rather than equipment lists, with useful local control always kept close at hand.</p>
+            <p>Scenes are named around everyday actions rather than circuit numbers, with useful local control kept close at hand.</p>
             <ServiceFeatures items={wholeHomeFeatures} />
           </div>
           <div className="services-gallery services-gallery--whole-home" aria-label="Whole-home control examples">
@@ -252,7 +252,7 @@ export default function ServicesPage() {
         <div className="container services-chapter__grid">
           <div className="services-chapter__copy stack">
             <span className="eyebrow">05 · Lighting & shading</span>
-            <h2 id="lighting-and-shading-heading" className="heading-xl">Atmosphere, recalled simply.</h2>
+            <h2 id="lighting-and-shading-heading" className="heading-xl">Set the lights and curtains in one action.</h2>
             <p className="lede">Architectural lighting and compatible window treatments can be coordinated around how a room looks, feels and changes through the day.</p>
             <p>Scenes make layered settings easy to recall, while keypads are planned with the interior so the technology feels intentional rather than added later.</p>
             <ServiceFeatures items={lightingFeatures} />
@@ -275,8 +275,8 @@ export default function ServicesPage() {
           <div className="services-chapter__copy stack">
             <span className="eyebrow">06 · Networks & infrastructure</span>
             <h2 id="networks-and-infrastructure-heading" className="heading-xl">A stronger foundation behind the finish.</h2>
-            <p className="lede">Coverage, cabling and equipment space are planned early so connected systems have an organised and supportable foundation.</p>
-            <p>A considered backbone protects the finished experience from avoidable clutter and leaves practical room for commissioning, maintenance and future change.</p>
+            <p className="lede">Coverage, cabling and equipment locations are planned early so connected systems have a practical foundation.</p>
+            <p>The plan accounts for power, ventilation, labelling and service access so installation and later maintenance are easier to manage.</p>
             <ServiceFeatures items={networkFeatures} />
           </div>
           <figure className="services-remote-media services-network-media">
@@ -311,7 +311,7 @@ export default function ServicesPage() {
             </article>
           </div>
           <Link className="text-link services-control4-link" href="/control4">
-            See how Control4 can fit into the experience <ArrowRight size={16} aria-hidden="true" />
+            See how Control4 can fit a project <ArrowRight size={16} aria-hidden="true" />
           </Link>
         </div>
       </section>

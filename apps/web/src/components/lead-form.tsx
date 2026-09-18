@@ -120,7 +120,7 @@ export function LeadForm() {
       <div className="form-intro form-group--full">
         <span className="eyebrow">A simple first step</span>
         <h2>Tell us the essentials.</h2>
-        <p>Five short details are enough to begin. Fields marked <span aria-hidden="true">*</span><span className="sr-only">with an asterisk</span> are required.</p>
+        <p>Five short details are enough to begin. Fields marked <span aria-hidden="true">*</span><span className="sr-only">with an asterisk</span> are required. Optional project detail can be added below.</p>
       </div>
 
       {(fieldErrors.length > 0 || serverStatus?.ok === false) ? (
@@ -165,7 +165,7 @@ export function LeadForm() {
       </div>
       <div className="form-group form-group--full">
         <label className="required-label" htmlFor="message">Short project description</label>
-        <textarea id="message" required placeholder="What would you like the space to do more simply?" aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? "message-help message-error" : "message-help"} {...register("message")} />
+        <textarea id="message" required placeholder="For example: new build, four bedrooms, lighting and audio planning before electrical first fix." aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? "message-help message-error" : "message-help"} {...register("message")} />
         <p id="message-help" className="field-help">A room list, goals and approximate timing are useful. Never include passwords, access codes or security layouts.</p>
         {errors.message ? <p id="message-error" className="field-error">{errors.message.message}</p> : null}
       </div>

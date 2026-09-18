@@ -16,7 +16,7 @@ test("home page index and responsive shell work", async ({ page }) => {
   await expect(pageIndex.getByRole("link", { name: "Commercial" })).toBeVisible();
   await pageIndex.getByRole("link", { name: "All projects" }).click();
   await expect(page).toHaveURL(/\/projects$/);
-  await expect(page.getByRole("heading", { level: 1, name: /Look closer/ })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: /Real homes/ })).toBeVisible();
   if (await menuToggle.isVisible()) await menuToggle.click();
   await expect(page.getByRole("navigation", { name: "Site pages" })).toBeVisible();
   await page.locator(".site-brand").click();
@@ -38,6 +38,31 @@ test("residential journal uses only the supplied project gallery", async ({ page
   await expect(page.locator(".residential-service-grid")).toHaveCount(0);
 });
 
+test("key pages load their images and keep content available with reduced motion", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.addInitScript(() => {
+    window.localStorage.setItem(
+      "site-consent-v1",
+      JSON.stringify({ necessary: true, analytics: false })
+    );
+  });
+
+  for (const path of ["/", "/residential", "/services"]) {
+    await page.goto(path, { waitUntil: "domcontentloaded" });
+    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+    const images = page.locator("main img");
+    const imageCount = await images.count();
+    expect(imageCount).toBeGreaterThan(0);
+    await images.evaluateAll((elements) => elements.forEach((element) => {
+      (element as HTMLImageElement).loading = "eager";
+    }));
+    await expect.poll(
+      () => images.evaluateAll((elements) => elements.filter((element) => (element as HTMLImageElement).naturalWidth === 0).map((element) => (element as HTMLImageElement).currentSrc || (element as HTMLImageElement).src)),
+      { message: `${path} has images that did not load`, timeout: 15_000 }
+    ).toEqual([]);
+  }
+});
+
 test("services 04 through 06 repeat the first three chapter layouts", async ({ page }) => {
   await page.goto("/services", { waitUntil: "domcontentloaded" });
 
@@ -46,6 +71,45 @@ test("services 04 through 06 repeat the first three chapter layouts", async ({ p
   await expect(page.locator("#lighting-and-shading")).toHaveClass(/services-chapter--dark/);
   await expect(page.locator("#lighting-and-shading .services-gallery")).toBeVisible();
   await expect(page.locator("#networks-and-infrastructure .services-remote-media")).toBeVisible();
+});
+
+test("interactive process supports direct and sequential stage navigation", async ({ page }) => {
+  await page.goto("/process", { waitUntil: "domcontentloaded" });
+
+  const heroBackground = page.locator(".page-hero__media img");
+  await expect(heroBackground).toBeVisible();
+  await expect(heroBackground).toHaveAttribute("alt", "");
+  await expect.poll(() => heroBackground.evaluate((element) => (element as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+
+  const designStage = page.getByRole("button", { name: /Design/ });
+  await designStage.click();
+  await expect(designStage).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("#process-stage-detail").getByRole("heading", { name: "Design" })).toBeVisible();
+  const floorPlan = page.getByRole("img", { name: "Detailed ground-floor plan for a three-bedroom residence" });
+  await expect(floorPlan).toBeVisible();
+  await expect.poll(() => floorPlan.evaluate((element) => (element as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+
+  const installStage = page.getByRole("button", { name: /Install & test/ });
+  await expect(installStage).toHaveAttribute("aria-pressed", "false");
+  await installStage.click();
+  await expect(installStage).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("#process-stage-detail").getByRole("heading", { name: "Install & test" })).toBeVisible();
+  const touchscreen = page.getByRole("img", { name: "Person using a wall-mounted home-control touchscreen" });
+  await expect(touchscreen).toBeVisible();
+  await expect.poll(() => touchscreen.evaluate((element) => (element as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+
+  await page.getByRole("button", { name: "Previous" }).click();
+  await expect(page.locator("#process-stage-detail").getByRole("heading", { name: "Coordinate" })).toBeVisible();
+  const coordinationImage = page.getByRole("img", {
+    name: "Design and construction team coordinating around plans and material samples"
+  });
+  await expect(coordinationImage).toBeVisible();
+  await expect.poll(() => coordinationImage.evaluate((element) => (element as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+
+  const shortestStageControl = await page.locator(".process-journey__index button").evaluateAll((buttons) =>
+    Math.min(...buttons.map((button) => button.getBoundingClientRect().height))
+  );
+  expect(shortestStageControl).toBeGreaterThanOrEqual(44);
 });
 
 test("development consultation flow confirms server success", async ({ page }) => {

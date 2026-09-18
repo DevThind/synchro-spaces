@@ -14,9 +14,14 @@ export function SectionHeading({ eyebrow, title, intro }: { eyebrow: string; tit
   );
 }
 
-export function PageHero({ eyebrow, title, intro, aside }: { eyebrow: string; title: string; intro: string; aside?: string }) {
+export function PageHero({ eyebrow, title, intro, aside, backgroundImage }: { eyebrow: string; title: string; intro: string; aside?: string; backgroundImage?: ContentImage }) {
   return (
-    <header className="page-hero">
+    <header className={`page-hero${backgroundImage ? " page-hero--image" : ""}`}>
+      {backgroundImage ? (
+        <div className="page-hero__media" aria-hidden="true">
+          <Image src={backgroundImage.src} alt="" fill priority sizes="100vw" />
+        </div>
+      ) : null}
       <div className="container page-hero-grid">
         <div className="stack" style={{ "--stack-space": "1.35rem" } as React.CSSProperties}>
           <span className="eyebrow">{eyebrow}</span><h1 className="heading-xl">{title}</h1><p className="lede">{intro}</p>
@@ -37,7 +42,7 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
 }
 
 export function ResponsiveImage({ image, fill = false, priority = false, sizes = "(max-width: 768px) 100vw, 50vw", className }: { image: ContentImage; fill?: boolean; priority?: boolean; sizes?: string; className?: string }) {
-  return <Image src={image.src} alt={image.alt} width={fill ? undefined : image.width} height={fill ? undefined : image.height} fill={fill || undefined} priority={priority} loading={priority ? "eager" : undefined} sizes={sizes} className={className} />;
+  return <Image src={image.src} alt={image.alt} width={fill ? undefined : image.width} height={fill ? undefined : image.height} fill={fill || undefined} priority={priority} loading={priority ? "eager" : undefined} sizes={sizes} className={className} unoptimized={image.unoptimized} />;
 }
 
 export function ServiceCard({ service, index }: { service: Service; index: number }) {
@@ -86,7 +91,7 @@ export function FaqAccordion({ items }: { items: Faq[] }) {
 }
 
 export function ConsultationCta({ className }: { className?: string } = {}) {
-  return <section className={`cta${className ? ` ${className}` : ""}`} aria-labelledby="consultation-cta"><div className="container cta-inner"><div className="stack"><span className="eyebrow">Start in the right place</span><h2 id="consultation-cta" className="heading-xl">Tell us how you want the space to feel.</h2><p>Share the project stage, the rooms involved and the moments you want to make simpler. Please never include passwords, access codes or sensitive security details.</p></div><Link className="button button--dark" href="/contact" data-analytics-event="booking_click">Start a conversation <ArrowRight size={16} aria-hidden="true" /></Link></div></section>;
+  return <section className={`cta${className ? ` ${className}` : ""}`} aria-labelledby="consultation-cta"><div className="container cta-inner"><div className="stack"><span className="eyebrow">Planning a project?</span><h2 id="consultation-cta" className="heading-xl">Bring the technology conversation in early.</h2><p>Tell us whether you are planning a new build, renovation or upgrade, which rooms are involved, and what needs to work better day to day.</p></div><Link className="button button--dark" href="/contact" data-analytics-event="booking_click">Plan a consultation <ArrowRight size={16} aria-hidden="true" /></Link></div></section>;
 }
 
 export function FeatureList({ items }: { items: string[] }) {
@@ -99,7 +104,7 @@ export function ProjectGallery({ images }: { images: ContentImage[] }) {
     const sizes = fullWidthOnPhone
       ? "(max-width: 780px) 100vw, 66vw"
       : "(max-width: 560px) 50vw, (max-width: 780px) 100vw, 33vw";
-    return <figure key={`${image.src}-${index}`}><ResponsiveImage image={image} fill priority={index === 0} sizes={sizes} /></figure>;
+    return <figure key={`${image.src}-${index}`}><ResponsiveImage image={image} fill priority={index === 0} sizes={sizes} /><figcaption>{image.alt}</figcaption></figure>;
   })}</div>;
 }
 

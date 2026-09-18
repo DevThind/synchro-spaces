@@ -5,6 +5,7 @@ export type ContentImage = {
   alt: string;
   width: number;
   height: number;
+  unoptimized?: boolean;
 };
 
 export type SeoFields = {

@@ -128,6 +128,48 @@ export const audioTouchscreen = {
   height: 923
 };
 
+export const processBrief = {
+  src: "/images/synchro-spaces/process-brief.png",
+  alt: "Three construction professionals reviewing architectural drawings on site",
+  width: 1672,
+  height: 941
+};
+
+export const processHero = {
+  src: "/images/synchro-spaces/process-hero.png",
+  alt: "Project team reviewing plans in a warmly lit design studio",
+  width: 1672,
+  height: 941
+};
+
+export const processDesign = {
+  src: "/images/synchro-spaces/process-design.png",
+  alt: "Detailed ground-floor plan for a three-bedroom residence",
+  width: 1536,
+  height: 1024
+};
+
+export const processCoordinate = {
+  src: "/images/synchro-spaces/process-coordinate.png",
+  alt: "Design and construction team coordinating around plans and material samples",
+  width: 1672,
+  height: 941
+};
+
+export const processTouchscreen = {
+  src: "/images/synchro-spaces/process-touchscreen.jpeg",
+  alt: "Person using a wall-mounted home-control touchscreen",
+  width: 589,
+  height: 1280
+};
+
+export const processHandheldController = {
+  src: "/images/synchro-spaces/process-handheld-controller.jpeg",
+  alt: "Person using a handheld smart-home controller while seated",
+  width: 589,
+  height: 1280
+};
+
 export const residentialLivingRoomProject = {
   src: "/images/synchro-spaces/residential-living-room-project.jpg",
   alt: "Completed residential living room with integrated television, ceiling speakers and layered architectural lighting",
@@ -153,7 +195,8 @@ export const residentialProjectTwoDining = {
   src: "/images/synchro-spaces/residential-project-two-dining.jpeg",
   alt: "Timber-lined dining room with pendant lighting, recessed lighting and integrated ceiling speakers",
   width: 1086,
-  height: 1448
+  height: 1448,
+  unoptimized: true
 };
 
 export const residentialProjectTwoLightingPanel = {
@@ -210,12 +253,12 @@ export const services: Service[] = [
     id: "service-whole-home",
     title: "Whole-home automation",
     slug: "whole-home-automation",
-    eyebrow: "One considered system",
-    summary: "Bring lighting, curtains, comfort, entertainment and everyday scenes into one coherent experience.",
+    eyebrow: "One set of controls",
+    summary: "Operate compatible lighting, curtains, comfort and entertainment from keypads, touchscreens and an app.",
     audience: "residential",
     body: [
-      "A well-planned smart home feels simple because the complexity has been resolved behind the scenes. The controls are clear, daily routines are easy to recall, and the system responds in ways that make sense to everyone in the home.",
-      "Synchro Spaces begins with the rooms, routines and project constraints, then coordinates the infrastructure and control intent needed for a composed result."
+      "A whole-home system can replace separate remotes and apps with clearly named room controls and a small set of useful routines such as Welcome, Away and Goodnight.",
+      "Synchro Spaces reviews the rooms, electrical plan and products involved before defining keypads, equipment locations, cable routes and the actions assigned to each scene."
     ],
     outcomes: ["Consistent room controls", "Purposeful scenes and schedules", "A clear plan for connected systems"],
     image: audioTouchscreen,
@@ -228,12 +271,12 @@ export const services: Service[] = [
     id: "service-lighting",
     title: "Lighting & curtain control",
     slug: "architectural-lighting",
-    eyebrow: "Atmosphere, simplified",
-    summary: "Shape light, privacy and mood with clearly named scenes and controls that belong in the room.",
+    eyebrow: "Light and privacy",
+    summary: "Recall layered lighting and move compatible curtains or blinds from a wall keypad, schedule or app.",
     audience: "both",
     body: [
-      "Lighting and curtain control work best when they are considered alongside the interior. Thoughtful keypad locations and plainly named scenes keep daily use immediate while reducing visual clutter.",
-      "The practical details—loads, power, curtain provision, device locations and manual overrides—are reviewed against the project before equipment is selected."
+      "A keypad can call up settings for cooking, dining, entertaining or leaving the house without adjusting each circuit separately. Compatible curtains and blinds can join the same action where the project allows.",
+      "Loads, power supplies, curtain pockets, keypad positions and manual overrides are reviewed against the electrical and interior drawings before equipment is selected."
     ],
     outcomes: ["Clear scene-based control", "Coordinated curtain provision", "Simple local control and overrides"],
     image: control4TouchscreenHallway,
@@ -246,12 +289,12 @@ export const services: Service[] = [
     id: "service-av",
     title: "Audio, video & entertainment",
     slug: "audio-video",
-    eyebrow: "Technology you enjoy, not manage",
-    summary: "Coordinate music, television and media so every source is easy to reach and every room remains visually calm.",
+    eyebrow: "Music and pictures",
+    summary: "Plan televisions, speakers and source equipment so watching or listening takes fewer remotes and fewer steps.",
     audience: "both",
     body: [
-      "Speakers, displays, source equipment and control become part of the space when they are planned early. Sightlines, sound, ventilation and cable routes all influence the finished experience.",
-      "The goal is straightforward operation: choose what you want to watch or hear, select the room, and let the supporting system handle the sequence."
+      "Speaker positions, display sizes, viewing angles, equipment ventilation and cable routes all affect the finished room and are best resolved before ceilings and joinery are closed.",
+      "Controls can be programmed so choosing a source also switches the display, audio and relevant room settings in the correct order."
     ],
     outcomes: ["Simple source selection", "Discreet equipment planning", "Consistent room-to-room control"],
     image: homeTheatre,
@@ -264,29 +307,29 @@ export const services: Service[] = [
     id: "service-network",
     title: "Networking & infrastructure",
     slug: "residential-networking",
-    eyebrow: "The quiet foundation",
-    summary: "Give connected spaces the cabling, coverage and organised equipment foundation they rely on.",
+    eyebrow: "Cabling and coverage",
+    summary: "Plan wired connections, Wi-Fi coverage and equipment locations before finishes make changes difficult.",
     audience: "both",
     body: [
-      "Reliable connected living starts with infrastructure: cable pathways, equipment space, power, ventilation and network coverage. These decisions deserve the same care as the visible controls.",
-      "A considered rack and a legible installation make the system easier to commission, understand and support as needs change."
+      "Floor plans and construction materials are reviewed to place data points and wireless access points where they can serve the property without becoming an afterthought.",
+      "The central equipment location needs suitable power, ventilation, cable management, labelling and service access."
     ],
     outcomes: ["Planned wired and wireless coverage", "Organised equipment infrastructure", "Clearer service access"],
-    image: integrationRack,
+    image: control4TouchscreenHallway,
     relatedServiceSlugs: ["whole-home-automation", "audio-video"],
     seoTitle: "Smart-Home Networking & Infrastructure",
-    seoDescription: "Build a considered network, cabling and equipment foundation for a connected home or commercial space.",
+    seoDescription: "Plan network coverage, structured cabling and serviceable equipment locations for a connected home or commercial property.",
     published: true
   },
   {
     id: "service-security",
     title: "Integrated security",
     slug: "integrated-security",
-    eyebrow: "Awareness, considered",
-    summary: "Bring compatible cameras, video door stations, locks, gates, sensors and selected alarm controls into one considered interface.",
+    eyebrow: "Entry and visibility",
+    summary: "View compatible cameras and door stations, and control selected locks or gates, from approved interfaces.",
     audience: "both",
     body: [
-      "Integrated security begins with clear visibility and deliberate control. Compatible cameras, video door stations, access devices and selected alarm interfaces can be coordinated so useful status is easier to understand without exposing sensitive detail.",
+      "Compatible cameras, video door stations and access devices can be coordinated so residents can check an entrance and respond from an approved touchscreen or app.",
       "Every project is reviewed for compatibility and clear responsibility boundaries. Monitoring, emergency response and life-safety functions remain with the relevant specialist providers; passwords, alarm codes, door codes and detailed security layouts are never requested through this public website."
     ],
     outcomes: ["Coordinated camera and entry views", "Compatibility and privacy reviewed early", "Clear monitoring and life-safety boundaries"],
@@ -300,14 +343,14 @@ export const services: Service[] = [
     id: "service-comfort",
     title: "Comfort & daily routines",
     slug: "comfort-energy",
-    eyebrow: "Responsive by design",
-    summary: "Turn repeated actions into calm, memorable scenes while keeping manual control close at hand.",
+    eyebrow: "Useful routines",
+    summary: "Combine repeated actions into Welcome, Away, Entertain or Goodnight scenes, with manual control still available.",
     audience: "both",
     body: [
       "Useful automation is often a small set of routines that match real life: Welcome, Away, Entertain or Goodnight. Each scene can coordinate compatible systems while keeping the interaction familiar.",
-      "Every routine is shaped around the occupants and tested with clear manual overrides, so automation remains helpful rather than intrusive."
+      "Each routine is agreed with the occupants and tested with clear manual overrides so lights, curtains and media can still be controlled directly."
     ],
-    outcomes: ["Memorable everyday scenes", "Straightforward manual overrides", "Controls shaped around real routines"],
+    outcomes: ["Memorable everyday scenes", "Straightforward manual overrides", "Controls matched to real routines"],
     image: control4KeypadWall,
     relatedServiceSlugs: ["architectural-lighting", "whole-home-automation"],
     seoTitle: "Smart-Home Scenes & Daily Routines",
@@ -365,8 +408,8 @@ export const projects: Project[] = [
     slug: "hidden-backbone",
     location: "Smart-home infrastructure",
     propertyType: "Systems detail",
-    summary: "Control, audio and networking brought together in an organised rack behind the finished experience.",
-    brief: "A calm room depends on decisions that are rarely seen. Centralised equipment needs considered power, ventilation, cabling, labelling and access so the visible experience can remain simple.",
+    summary: "Control, audio and network equipment grouped in an organised central rack.",
+    brief: "Centralised equipment needs suitable power, ventilation, cabling, labelling and working access. Planning these requirements early keeps technical hardware out of occupied rooms and gives installers a practical place to commission and service it.",
     approach: [
       "Plan the equipment location and cable routes before finishes close access.",
       "Separate visible interactions from the technical backbone that supports them.",
@@ -377,7 +420,7 @@ export const projects: Project[] = [
     gallery: [integrationRack, sceneKeypadSix, smartLock],
     relatedServiceSlugs: ["residential-networking", "audio-video", "whole-home-automation"],
     seoTitle: "The Hidden Backbone | Smart-Home Infrastructure",
-    seoDescription: "See how organised control, audio and network infrastructure supports a simple smart-home experience.",
+    seoDescription: "See how an organised central rack supports control, audio, networking and practical service access.",
     published: true
   }
 ];
@@ -445,7 +488,7 @@ export const serviceAreas: ServiceArea[] = [];
 export const partners: Partner[] = [
   { id: "layer-control", name: "Unified control", category: "Experience", summary: "A consistent interface for the compatible systems selected for the project.", verificationRequired: false },
   { id: "layer-lighting", name: "Lighting & scenes", category: "Atmosphere", summary: "Keypads, dimming and scenes planned around rooms and routines.", verificationRequired: false },
-  { id: "layer-network", name: "Network foundation", category: "Infrastructure", summary: "Wired and wireless infrastructure considered as part of the building.", verificationRequired: false },
+  { id: "layer-network", name: "Network foundation", category: "Infrastructure", summary: "Wired and wireless coverage planned with the building layout.", verificationRequired: false },
   { id: "layer-media", name: "Audio & media", category: "Entertainment", summary: "Discreet equipment and straightforward room-to-room control.", verificationRequired: false },
   { id: "layer-access", name: "Access readiness", category: "Entry", summary: "Compatible access devices coordinated with clear security boundaries.", verificationRequired: false }
 ];
@@ -453,7 +496,7 @@ export const partners: Partner[] = [
 export const faqs: Faq[] = [
   { id: "faq-start", category: "planning", question: "When should smart-home planning begin?", answer: "Ideally before electrical work and interior details are finalised. Early coordination protects keypad locations, curtain provision, cable pathways, network coverage and equipment space." },
   { id: "faq-renovation", category: "planning", question: "Can an existing home be upgraded?", answer: "Often, yes. The practical scope depends on access to cable pathways, the electrical system, existing finishes, network conditions and equipment compatibility. A project review is the right first step." },
-  { id: "faq-platform", category: "platform", question: "Can different systems work together?", answer: "Compatible lighting, curtains, comfort, audio, video and selected access devices can often share a consistent control experience. The exact scope is confirmed only after the products and project conditions are reviewed." },
+  { id: "faq-platform", category: "platform", question: "Can different systems work together?", answer: "Compatible lighting, curtains, comfort, audio, video and selected access devices can often share the same keypads, touchscreens and app. Exact support is confirmed only after the products and project conditions are reviewed." },
   { id: "faq-credentials", category: "privacy", question: "Should I send passwords or access codes with my enquiry?", answer: "No. Never send automation credentials, alarm codes, door codes, network passwords or sensitive security layouts through this website. The enquiry form only collects the information needed to arrange a conversation." }
 ];
 
@@ -461,9 +504,9 @@ export const testimonials: Testimonial[] = [];
 export const teamMembers: TeamMember[] = [];
 
 export const processSteps = [
-  { number: "01", title: "Listen", text: "Start with the people, the rooms, the routines and what the project should feel like." },
-  { number: "02", title: "Plan", text: "Translate the brief into a clear scope, device locations, infrastructure and control intent." },
-  { number: "03", title: "Coordinate", text: "Resolve interfaces and responsibilities with the design team and relevant trades." },
-  { number: "04", title: "Integrate", text: "Install, configure and test the approved systems as one considered experience." },
-  { number: "05", title: "Handover", text: "Walk through daily use, confirm the agreed scenes and leave a clear support path." }
+  { number: "01", title: "Brief", text: "Review the property, drawings, rooms, priorities, budget framework and construction programme." },
+  { number: "02", title: "Design", text: "Define the system scope, cable routes, equipment locations, interfaces and responsibilities." },
+  { number: "03", title: "Coordinate", text: "Check the design with the architect, interior designer, electrician and other relevant trades." },
+  { number: "04", title: "Install & test", text: "Install, configure and test the approved equipment, room controls and agreed routines." },
+  { number: "05", title: "Handover", text: "Demonstrate everyday use, confirm scene labels and explain the agreed route for support." }
 ];

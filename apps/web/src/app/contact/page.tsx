@@ -13,7 +13,7 @@ export const metadata = createMetadata({
 
 export default function ContactPage() {
   return <>
-    <PageHero eyebrow="Consultation" title="Let’s begin with your space." intro="Tell us where the project is and what you would like lighting, curtains, entertainment or connected systems to do more simply." aside="A name, preferred contact method and short brief are enough to start." />
+    <PageHero eyebrow="Consultation" title="Tell us what you are planning." intro="Share the project location and stage, the rooms involved, and what you need lighting, curtains, entertainment or connected systems to do." aside="A name, preferred contact method and short brief are enough to start." />
     <section className="section"><div className="container form-layout"><div><LeadForm /></div><ContactInformation /></div></section>
   </>;
 }

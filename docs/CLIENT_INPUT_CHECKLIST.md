@@ -6,7 +6,7 @@
 - [x] Verified Instagram profile: `https://www.instagram.com/synchro_spaces/`
 - [x] Published phone: `+91 7210800077`
 - [x] Published email: `synchrospaces@gmail.com`
-- [x] Seventeen user-supplied images integrated into the residential, Control4, and services stories
+- [x] Twenty-eight supplied images catalogued across the residential, Control4, and services stories
 - [x] Unknown address, hours, and location values left empty and omitted
 - [x] Organization JSON-LD includes the verified identity, contact details, and Instagram URL without unverified location fields
 
@@ -21,10 +21,11 @@
 
 ## Claims and content
 
-- [ ] Written confirmation of publication rights for all seventeen supplied images
+- [ ] Written confirmation of publication rights for all twenty-eight supplied images
+- [ ] Clean, full-resolution equipment-rack photograph without embedded promotional copy (the current site uses a safe crop of the supplied composite)
 - [ ] Written approval for the supplied Control4 logo placement and required trademark treatment
 - [ ] Confirmation of any required photographer, property-owner, installer, client, or third-party credits/permissions
-- [ ] Approved project facts, location precision, scope, systems, outcomes, and preferred anonymization
+- [ ] Approved facts for each of the two residential projects: Synchro Spaces' role, property type, general location, completion date, installed systems, practical results, credits, and preferred anonymization
 - [ ] Approved Control4 dealer/status wording with evidence
 - [ ] Verified licences, certifications, insurance, experience, awards, and supported brands
 - [ ] Verified technology partner/dealer relationships and approved logo usage
